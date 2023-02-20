@@ -5,20 +5,23 @@
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-
+    <script src="bootstrap-5.2.3/dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="bootstrap-5.2.3/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="fontawesome-free-6.2.1-web/css/all.css">
+    <link rel="stylesheet" href="home_page.css">
 </head>
 <body>
-<div>
+<div class="m-0">
     <div class="row">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #008080">
-            <!-- Container wrapper -->
             <div class="container-fluid ms-5 me-5">
-                <!-- Navbar brand -->
                 <a class="navbar-brand me-2" href="#">
                     <img
-                            src="router.png"
+                            src="img/router.png"
                             height="32"
                             alt="Logo"
                             loading="lazy"
@@ -26,7 +29,6 @@
                     />
                 </a>
 
-                <!-- Toggle button -->
                 <button
                         class="navbar-toggler"
                         type="button"
@@ -39,9 +41,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
 
-                <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarButtonsOne">
-                    <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Lịch sử giao dịch</a>
@@ -50,32 +50,26 @@
                             <a class="nav-link" href="#">Kiểm tra đơn hàng</a>
                         </li>
                     </ul>
-                    <!-- Left links -->
 
                     <div class="d-flex align-items-center">
                         <a class="btn btn-white px-3 me-2" href="#"
-                           type="button"><i class="fa-regular fa-cart-shopping-fast"></i> Giỏ hàng</a>
-                        <button type="button" class="btn btn-white px-3 me-2">
+                           type="button"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                        <a type="button" class="btn btn-white px-3 me-2"
+                           href="http://localhost:63342/prototype/login.html?_ijt=8qkbquvl416ahk5i3pel3ghq0r&_ij_reload=RELOAD_ON_SAVE">
                             Đăng nhập
-                        </button>
-                        <button type="button" class="btn btn-white px-3 me-3">
+                        </a>
+                        <a type="button" class="btn btn-white px-3 me-3" href="#">
                             Đăng kí
-                        </button>
+                        </a>
                     </div>
                 </div>
-                <!-- Collapsible wrapper -->
             </div>
-            <!-- Container wrapper -->
         </nav>
-        <!-- Navbar -->
     </div>
 
     <div class="row">
-        <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <!-- Container wrapper -->
             <div class="container-fluid ms-5 me-5">
-                <!-- Toggle button -->
                 <button
                         class="navbar-toggler"
                         type="button"
@@ -88,9 +82,7 @@
                     <i class="fas fa-bars"></i>
                 </button>
 
-                <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarButtonsTwo">
-                    <!-- Left links -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Danh mục sản phẩm</a>
@@ -105,13 +97,12 @@
                             <a class="nav-link" href="#">Giảm giá đặc biệt</a>
                         </li>
                     </ul>
-                    <!-- Left links -->
 
                     <div class="d-flex align-items-center">
                         <form class="d-flex input-group w-auto">
                             <input
                                     type="search"
-                                    class="form-control rounded"
+                                    class="form-control"
                                     placeholder="Tìm kiếm"
                                     aria-label="Search"
                             />
@@ -121,18 +112,96 @@
                         </form>
                     </div>
                 </div>
-                <!-- Collapsible wrapper -->
             </div>
-            <!-- Container wrapper -->
         </nav>
-        <!-- Navbar -->
     </div>
 
-    <div class="row" style="min-height: 20vh">
+    <div class="row" style="min-height: 25vh">
         <div class="col-md-1"></div>
-        <div class="col-md-10" style="background-color: #EA4335">
+        <div class="col-md-10">
             <div class="row">
-
+                <div class="container text-center my-3">
+                    <div class="row mx-auto my-auto justify-content-center">
+                        <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item active">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="img/router-chuan-wifi-6-bang-tan-kep-asus-ax55-den-100822-014341-600x600.jpg"
+                                                     style="height: 150px; width: 420px" class="img-fluid" alt="Router">
+                                            </div>
+                                            <div class="card-img-bottom">Asus AX55</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="img/router-wifi-ac1300uhp-bang-tan-kep-asus-ac1300-den-040822-022623-600x600.jpg"
+                                                     style="height: 150px; width: 420px" class="img-fluid" alt="Router">
+                                            </div>
+                                            <div class="card-img-bottom">ASUS AC1300</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="img/router-wifi-ac1500uhp-bang-tan-kep-asus-ac1500-den-040822-023121-600x600.jpg"
+                                                     style="height: 150px; width: 420px" class="img-fluid" alt="Router">
+                                            </div>
+                                            <div class="card-img-bottom">ASUS AC1500</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="img/router-wifi-ax11000-ba-bang-tan-asus-gt-ax11000-100822-081956-600x600.jpg"
+                                                     style="height: 150px; width: 420px" class="img-fluid" alt="Router">
+                                            </div>
+                                            <div class="card-img-bottom">ASUS AX11000</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="img/router-wifi-chuan-ac1200-xiaomi-4a-trang-040822-024701-600x600.jpg"
+                                                     style="height: 150px; width: 420px" class="img-fluid" alt="Router">
+                                            </div>
+                                            <div class="card-img-bottom">XIAOMI AC1200</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel-item">
+                                    <div class="col-md-3">
+                                        <div class="card">
+                                            <div class="card-img">
+                                                <img src="img/bo-phat-song-wifi-router-chuan-wifi-6-asus-ax1800hp-den-thumb-600x600.jpg"
+                                                     style="height: 150px; width: 420px" class="img-fluid" alt="Router">
+                                            </div>
+                                            <div class="card-img-bottom">ASUS AX1800HP</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
+                               data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </a>
+                            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
+                               data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -142,7 +211,7 @@
         <div class="row  d-flex justify-content-center px-5">
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="bo-phat-song-wifi-6-bang-tan-kep-asus-ax53u-600x600.jpg" height="240" width="284"
+                    <img src="img/bo-phat-song-wifi-6-bang-tan-kep-asus-ax53u-600x600.jpg" height="240" width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Chuẩn Wifi 6 Asus AX53U </h5>
@@ -158,8 +227,9 @@
 
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="bo-phat-song-wifi-router-chuan-wifi-6-asus-ax1800hp-den-thumb-600x600.jpg" height="240"
-                         width="284"
+                    <img src="img/bo-phat-song-wifi-router-chuan-wifi-6-asus-ax1800hp-den-thumb-600x600.jpg"
+                         height="240"
+                         width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Chuẩn Wifi 6 Asus AX1800HP </h5>
@@ -175,8 +245,8 @@
 
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="bo-phat-wifi-mesh-chuan-ac1200-tenda-nova-mw3-100822-123518-600x600.jpg" height="240"
-                         width="284"
+                    <img src="img/bo-phat-wifi-mesh-chuan-ac1200-tenda-nova-mw3-100822-123518-600x600.jpg" height="240"
+                         width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Mesh Chuẩn AC1200 Tenda Nova MW3 </h5>
@@ -192,8 +262,8 @@
 
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="router-chuan-wifi-6-bang-tan-kep-asus-ax55-den-100822-014341-600x600.jpg" height="240"
-                         width="284"
+                    <img src="img/router-chuan-wifi-6-bang-tan-kep-asus-ax55-den-100822-014341-600x600.jpg" height="240"
+                         width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Mesh Chuẩn AC1200 Tenda Nova MW3 </h5>
@@ -209,8 +279,9 @@
 
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="router-wifi-ac1300uhp-bang-tan-kep-asus-ac1300-den-040822-022623-600x600.jpg" height="240"
-                         width="284"
+                    <img src="img/router-wifi-ac1300uhp-bang-tan-kep-asus-ac1300-den-040822-022623-600x600.jpg"
+                         height="240"
+                         width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Chuẩn AC1300UHP Asus AC1300 </h5>
@@ -226,8 +297,9 @@
 
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="router-wifi-ac1500uhp-bang-tan-kep-asus-ac1500-den-040822-023121-600x600.jpg" height="240"
-                         width="284"
+                    <img src="img/router-wifi-ac1500uhp-bang-tan-kep-asus-ac1500-den-040822-023121-600x600.jpg"
+                         height="240"
+                         width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Chuẩn AC1300UHP Asus AC1300 </h5>
@@ -243,8 +315,9 @@
 
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="router-wifi-ax11000-ba-bang-tan-asus-gt-ax11000-100822-081956-600x600.jpg" height="240"
-                         width="284"
+                    <img src="img/router-wifi-ax11000-ba-bang-tan-asus-gt-ax11000-100822-081956-600x600.jpg"
+                         height="240"
+                         width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Chuẩn AC1300UHP Asus AC1300 </h5>
@@ -260,8 +333,8 @@
 
             <div class="col-sm-6 col-lg-3" style="margin: 10px 0">
                 <div class="card">
-                    <img src="bo-phat-wifi-mesh-chuan-ac1200-tenda-nova-mw3-100822-123518-600x600.jpg" height="240"
-                         width="284"
+                    <img src="img/bo-phat-wifi-mesh-chuan-ac1200-tenda-nova-mw3-100822-123518-600x600.jpg" height="240"
+                         width="336"
                          alt="No image"/>
                     <div class="card-body">
                         <h5 class="card-title">Router Wifi Chuẩn AC1300UHP Asus AC1300 </h5>
@@ -283,7 +356,7 @@
     <div class="col-10 container-fluid row my-2">
         <div class="col-3">
             <div>
-                <h6>CÔNG TY CỔ PHẦN UQN</h6>
+                <h6>CÔNG TY CỔ PHẦN PHÂN PHỐI ROUTER WIFI UQN</h6>
             </div>
             <div>
                 <h6>
@@ -334,10 +407,28 @@
     </div>
     <div class="col-1"></div>
 </footer>
+<footer class="footer mt-auto py-3 bg-light">
+    <div class="container text-center">
+        <span class="text-muted">Create by UQN.</span>
+    </div>
+</footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-        crossorigin="anonymous"></script>
 </body>
+<script>
+    let items = document.querySelectorAll('.carousel .carousel-item')
 
+    items.forEach((el) => {
+        const minPerSlide = 4
+        let next = el.nextElementSibling
+        for (let i = 1; i < minPerSlide; i++) {
+            if (!next) {
+// wrap carousel by using first child
+                next = items[0]
+            }
+            let cloneChild = next.cloneNode(true)
+            el.appendChild(cloneChild.children[0])
+            next = next.nextElementSibling
+        }
+    })
+</script>
 </html>
