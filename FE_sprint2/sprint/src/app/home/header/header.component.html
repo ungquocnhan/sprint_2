@@ -1,0 +1,131 @@
+<header>
+  <div>
+    <div class="row">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #008080">
+        <div class="container-fluid ms-5 me-5">
+          <a class="navbar-brand me-2" routerLink="/home">
+            <img
+              src="../../../assets/image/router.png"
+              height="32"
+              alt="Logo"
+              loading="lazy"
+              style="margin-top: -1px;"
+            />
+          </a>
+
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarButtonsOne">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Lịch sử giao dịch</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Kiểm tra đơn hàng</a>
+              </li>
+            </ul>
+
+            <div class="d-flex align-items-center">
+              <a class="btn btn-white px-3 me-2" href="#"
+                 type="button"><i class="fa-regular fa-cart-shopping-fast"></i> Giỏ hàng</a>
+              <a type="button" class="btn btn-white px-3 me-2" routerLink="/security/signin">
+                Đăng nhập
+              </a>
+              <button type="button" class="btn btn-white px-3 me-3">
+                Đăng kí
+              </button>
+              <a type="button" class="btn btn-white px-3 me-3" data-bs-toggle="modal" data-bs-target="#logout">Đăng xuất</a>
+
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="row">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <!-- Container wrapper -->
+        <div class="container-fluid ms-5 me-5">
+          <!-- Toggle button -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-mdb-toggle="collapse"
+            data-mdb-target="#navbarButtonsExample"
+            aria-controls="navbarButtonsExample"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+
+          <!-- Collapsible wrapper -->
+          <div class="collapse navbar-collapse" id="navbarButtonsTwo">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" href="#">Danh mục sản phẩm</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Sản phẩm bán chạy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Chương trình khuyến mãi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Giảm giá đặc biệt</a>
+              </li>
+            </ul>
+            <!-- Left links -->
+
+            <div class="d-flex align-items-center">
+              <form class="d-flex input-group w-auto">
+                <input
+                  type="search"
+                  class="form-control rounded"
+                  placeholder="Tìm kiếm"
+                  aria-label="Search"
+                />
+                <button class="btn btn-outline-secondary" type="button">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- Collapsible wrapper -->
+        </div>
+        <!-- Container wrapper -->
+      </nav>
+      <!-- Navbar -->
+    </div>
+  </div>
+</header>
+<!-- Modal logout-->
+<div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel1">Đăng xuất</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn muốn đăng xuất!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
+        <button type="submit" (click)="logOut()" data-bs-dismiss="modal" class="btn btn-danger">Tiếp tục</button>
+      </div>
+    </div>
+  </div>
+</div>

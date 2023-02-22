@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="row main-content bg-success text-center">
+    <div class="col-md-4 text-center company__info">
+      <img src="../../../assets/image/router.png" height="225" width="225" alt="No image"/>
+      <h4 class="company_title">Freedom from wires</h4>
+    </div>
+    <div class="col-md-8 col-xs-12 col-sm-12 login_form ">
+      <div class="container-fluid">
+        <div class="row">
+          <h2>Đăng nhập</h2>
+        </div>
+        <div class="row">
+          <form class="form-group" [formGroup]="signInForm" (ngSubmit)="login()">
+            <div class="row">
+              <input type="text" formControlName="email" id="email" class="form__input" placeholder="Nhập email">
+              <div class="text-danger"
+                   *ngIf="signInForm.controls.email.invalid && signInForm.controls.email.touched else elseBlock">
+                <span *ngIf="signInForm.controls.email.hasError('required')"><i class="fa-solid fa-triangle-exclamation"></i>&nbsp;Email không được để trống.</span>
+                <span *ngIf="signInForm.controls.email.hasError('minlength')"><i class="fa-solid fa-triangle-exclamation"></i>&nbsp;Email Không nhỏ hơn 3 ký tự.</span>
+              </div>
+              <ng-template #elseBlock><br></ng-template>
+            </div>
+
+            <div class="row">
+              <input type="password" formControlName="encryptPassword" id="password" class="form__input"
+                     placeholder="Nhập mật khẩu">
+              <div class="text-danger"
+                   *ngIf="signInForm.controls.encryptPassword.invalid && signInForm.controls.encryptPassword.touched else elseBlock">
+                <span *ngIf="signInForm.controls.encryptPassword.hasError('required')"><i class="fa-solid fa-triangle-exclamation"></i>&nbsp;Mật khẩu không được để trống.</span>
+                <span *ngIf="signInForm.controls.encryptPassword.hasError('minlength')"><i class="fa-solid fa-triangle-exclamation"></i>&nbsp;Mật khẩu Không nhỏ hơn 5 ký tự.</span>
+              </div>
+              <ng-template #elseBlock><br></ng-template>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <input id="check" type="checkbox" class="check" formControlName="rememberMe">
+                <label for="check"><span class="icon"></span> Remember me</label>
+              </div>
+              <div class="col-md-6">
+                <a style="text-decoration: none" href="#" role="button"> Quên mật khẩu.</a>
+              </div>
+            </div>
+            <div class="row">
+              <input type="submit" value="Đăng nhập" class="btn">
+            </div>
+          </form>
+        </div>
+        <div class="row">
+          <p>Chưa có tài khoản? <a href="#" style="text-decoration: none">Đăng kí tại đây.</a></p>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <a class="btn btn-primary btn-sm btn-block" href="#"
+               role="button"><i class="fa-brands fa-facebook" style="color: #3b5998"></i> Facebook</a>
+          </div>
+          <div class="col-md-6">
+            <a class="btn btn-primary btn-sm btn-block" href="#"
+               role="button"><i class="fa-brands fa-google" style="color: #EA4335"></i> Gmail</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
