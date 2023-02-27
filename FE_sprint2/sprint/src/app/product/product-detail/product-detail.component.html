@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="main">
-            <img [src]="imageList[0].url" alt="Router" class="img-feature"/>
+            <img [src]="imageList1" alt="Router" class="img-feature"/>
             <div class="control prev">
               <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor"
                    class="bi bi-arrow-left-short" viewBox="0 0 16 16">
@@ -21,8 +21,8 @@
               </svg>
             </div>
           </div>
-          <div class="list-image" *ngFor="let img of imageList">
-            <div>
+          <div class="list-image">
+            <div *ngFor="let img of imageList">
               <img [src]="img.url" alt="Router">
             </div>
           </div>
@@ -30,19 +30,20 @@
 
         <div class="col-lg-6 mt-2">
           <div class="row">
-            <span class="fw-bold" style="font-size: 30px">{{productDetail.name}}</span>
+            <span class="fw-bold" style="font-size: 30px">{{productDetail?.name}}</span>
           </div>
 
           <h6>Thông tin chung:</h6>
           <ul>
-            <li><span style="font-weight: bold">Thương hiệu: </span><span>Asus</span></li>
-            <li><span style="font-weight: bold">Chuẩn Wifi: </span><span>WiFi 6 (802.11AX) - 1800Mbps</span>
-            </li>
-            <li><span style="font-weight: bold">Bảo hành: </span><span>36 tháng</span></li>
-            <li><span style="font-weight: bold">Hỗ trợ tối đa: </span><span>25 user</span></li>
+            <li><span style="font-weight: bold">Thương hiệu: </span><span>{{productDetail?.manufacture?.name}}</span></li>
+            <li><span style="font-weight: bold">Chuẩn Wifi: </span><span>{{productDetail?.standardNetwork?.name}}</span></li>
+            <li><span style="font-weight: bold">Bảo hành: </span><span>{{productDetail?.guarantee?.name}}</span></li>
+            <li><span style="font-weight: bold">Hỗ trợ tối đa: </span><span>{{productDetail?.userConnect?.name}}</span></li>
           </ul>
-          <h5>Giá: <span style="text-decoration-line: line-through">2.290.000</span></h5>
-          <h5 style="color: #8C0F07">Giá KM: 1.850.000</h5>
+          <pre *ngIf="productDetail?.promotion?.percentPromotion == 0; else elseNoPromotion" style="font-size: 20px; color: #8C0F07">Giá: <span style="font-weight: bold">{{productDetail?.price | number}} VND</span></pre>
+          <ng-template #elseNoPromotion><pre style="font-size: 20px">Giá:        <span style="text-decoration-line: line-through; font-weight: bold">{{productDetail?.price | number}} VND</span></pre></ng-template>
+          <pre style="color: #8C0F07; font-size: 20px" *ngIf="productDetail?.promotion?.percentPromotion != 0">Giá KM:  <span style="font-weight: bold">{{total | number}} VND</span></pre>
+
           <button type="button" class="btn btn-lg btn-primary me-3" style="background-color: #008080">Đặt hàng
           </button>
           <a type="button" class="btn btn-lg btn-primary" style="background-color: #8C0F07"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
@@ -64,87 +65,53 @@
     <table class="table table-striped table-bordered" style="width:100%">
       <tr>
         <th>Tốc độ:</th>
-        <td>574 Mbps (băng tần 2.4GHz), 1201 Mbps (băng tần 5GHz)</td>
+        <td>{{productDetail?.speedWifi?.name}}</td>
       </tr>
       <tr>
         <th>Băng tần:</th>
-        <td>2.4GHz & 5GHz</td>
+        <td>{{productDetail?.frequencyBand?.name}}</td>
       </tr>
       <tr>
         <th>Số ăng-ten:</th>
-        <td>4 ăng ten ngoài</td>
+        <td>{{productDetail?.anteing?.amount}} {{productDetail?.typeAnteing?.name}}</td>
       </tr>
       <tr>
         <th>Truy cập tối đa:</th>
-        <td>30 user</td>
+        <td>{{productDetail?.userConnect?.name}}</td>
       </tr>
       <tr>
         <th>Mật độ phủ sóng (bán kính):</th>
-        <td>15 - 20 m</td>
+        <td>{{productDetail?.coverageDensity?.name}}</td>
       </tr>
       <tr>
         <th>Các cổng kết nối:</th>
-        <td>1 x WAN, 1 cổng USB 2.0, 3 x LAN</td>
+        <td>{{productDetail?.port?.name}}</td>
       </tr>
       <tr>
         <th>Nút bấm hỗ trợ:</th>
-        <td>1 nút Reset, 1 nút WPS, 1 Nút Mở/Tắt nguồn</td>
+        <td>{{productDetail?.buttonSupport?.name}}</td>
       </tr>
       <tr>
         <th>Kích thước:</th>
-        <td>Dài 20 cm x rộng 14.5 cm x cao 24 cm</td>
+        <td>{{productDetail?.size}}</td>
       </tr>
       <tr>
         <th>Bảo hành:</th>
-        <td>36 tháng</td>
+        <td>{{productDetail?.guarantee?.name}}</td>
       </tr>
       <tr>
         <th>Sản xuất tại:</th>
-        <td>Trung Quốc</td>
+        <td>{{productDetail?.madeIn?.name}}</td>
       </tr>
       <tr>
         <th>Hãng:</th>
-        <td>Asus</td>
+        <td>{{productDetail?.manufacture?.name}}</td>
       </tr>
     </table>
 
-    <span class="fw-bold" style="font-size: 20px">Thông tin sản phẩm</span>
+    <span class="fw-bold" style="font-size: 20px">Đặc điểm sản phẩm</span>
     <div class="description">
-      <p class="indent">Asus AX53U cung cấp đường truyền tốc độ Gigabit lên đến 1201 Mbps trên băng tần 5 GHz
-        và
-        574 Mbps trên
-        băng tần 2.4 GHz đảm bảo độ mượt khi lướt web giải trí, hay trải nghiệm các video 4K, chiến game
-        online
-        đồ họa cao và các bộ phim FHD,…
-      <p class="indent">Có thể lắp đặt Asus AX53U trên mặt bàn, kệ tủ hay treo tường thật gọn gàng nhờ kích
-        thước
-        thực sự nhỏ
-        gọn dài 20 cm x rộng 14.5 cm x cao 24 cm. Chọn vị trí lắp đặt phù hợp để đảm bảo khả năng phủ sóng
-        tốt
-        hơn.</p>
-      <p class="indent">OFDMA và MU-MIMO kích hoạt tín hiệu không dây đồng thời tới các thiết bị yêu cầu kết
-        nối,
-        tập trung
-        đường truyền về phía chúng mà không làm tăng độ trễ hay giảm tốc độ đường truyền, tối ưu hiệu quả
-        băng
-        thông sử dụng.</p>
-      <p class="indent">Router hỗ trợ kết nối đồng thời tới 30 user, vùng phủ sóng rộng đến 300 m2 kích hoạt
-        tốt
-        qua 4 ăng-ten 2
-        dBi.</p>
-      <p class="indent">Được tăng cường bởi Trend Micro™, AiProtection tăng cường bảo mật hiệu quả cho hệ
-        thống
-        Wifi của router
-        Asus, phòng chống xâm tối ưu và hỗ trợ quản lý, chặn các trang web cụ thể và các ứng dụng không mong
-        muốn, quản lý tốt internet nội bộ hoặc môi trường mạng của gia đình có trẻ nhỏ.</p>
-      <p class="indent">Tải, cài đặt và thực hiện các thiết lập cho Asus AX53U qua ứng dụng ASUS Router thật
-        dễ
-        dàng và đơn
-        giản.</p>
-      <p class="indent">Router có 3 cổng LAN, 1 cổng WAN, 1 cổng USB kết nối được đa dạng hơn để phục vụ nhu
-        cầu
-        giải trí và làm
-        việc.</p>
+      <p class="indent">{{productDetail?.description}}</p>
     </div>
   </div>
   <div class="col-lg-1"></div>

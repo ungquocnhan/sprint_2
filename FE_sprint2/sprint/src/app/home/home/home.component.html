@@ -1,112 +1,109 @@
 <div class="row" style="min-height: 25vh">
   <div class="col-md-1"></div>
   <div class="col-md-10">
-    <div class="row">
-      <div class="container text-center my-3">
-        <div class="row mx-auto my-auto justify-content-center">
-          <div id="recipeCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner" role="listbox">
-              <div class="carousel-item active">
-                <div class="col-md-3">
-                  `       <div class="card">
-                  <div class="card-img">
-                    <img src="img/router-chuan-wifi-6-bang-tan-kep-asus-ax55-den-100822-014341-600x600.jpg"
-                         style="height: 150px; width: 420px" class="img-fluid" alt="Router">
-                  </div>
-                  <div class="card-img-bottom">Asus AX55</div>
-                </div>
-                </div>
+    <owl-carousel-o [options]="customOptions">
+      <ng-container *ngFor="let slide of imageList">
+        <ng-template carouselSlide>
+          <!--          <img [src]="slide.url" alt="NO">-->
+          <div class="card">
+            <a [routerLink]="['/product/detail',slide.id]" class="card-link"
+               style="float: right; text-decoration: none; color: teal">
+              <img src="{{slide.url}}" height="240" width="336"
+                   alt="No image"/>
+              <div class="card-body">
+                <h5 class="card-title" style="min-height: 72px;">{{slide.name}} </h5>
               </div>
-              <div class="carousel-item">
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <img src="img/router-wifi-ac1300uhp-bang-tan-kep-asus-ac1300-den-040822-022623-600x600.jpg"
-                           style="height: 150px; width: 420px" class="img-fluid" alt="Router">
-                    </div>
-                    <div class="card-img-bottom">ASUS AC1300</div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <img src="img/router-wifi-ac1500uhp-bang-tan-kep-asus-ac1500-den-040822-023121-600x600.jpg"
-                           style="height: 150px; width: 420px" class="img-fluid" alt="Router">
-                    </div>
-                    <div class="card-img-bottom">ASUS AC1500</div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <img src="img/router-wifi-ax11000-ba-bang-tan-asus-gt-ax11000-100822-081956-600x600.jpg"
-                           style="height: 150px; width: 420px" class="img-fluid" alt="Router">
-                    </div>
-                    <div class="card-img-bottom">ASUS AX11000</div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <img src="img/router-wifi-chuan-ac1200-xiaomi-4a-trang-040822-024701-600x600.jpg"
-                           style="height: 150px; width: 420px" class="img-fluid" alt="Router">
-                    </div>
-                    <div class="card-img-bottom">XIAOMI AC1200</div>
-                  </div>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="col-md-3">
-                  <div class="card">
-                    <div class="card-img">
-                      <img src="img/bo-phat-song-wifi-router-chuan-wifi-6-asus-ax1800hp-den-thumb-600x600.jpg"
-                           style="height: 150px; width: 420px" class="img-fluid" alt="Router">
-                    </div>
-                    <div class="card-img-bottom">ASUS AX1800HP</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <a class="carousel-control-prev bg-transparent w-aut" href="#recipeCarousel" role="button"
-               data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            </a>
-            <a class="carousel-control-next bg-transparent w-aut" href="#recipeCarousel" role="button"
-               data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
             </a>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-1"></div>
+        </ng-template>
+      </ng-container>
+    </owl-carousel-o>
+
   </div>
+  <div class="col-md-1"></div>
 </div>
+
 
 <div>
   <div class="row  d-flex justify-content-center px-5">
     <div class="col-sm-6 col-lg-3" style="margin: 10px 0" *ngFor="let pro of productList?.content">
       <div class="card">
-        <img src="{{pro.url}}" height="240" width="336"
-             alt="No image"/>
-        <a [routerLink]="['/product/detail',pro.id]" class="card-link" style="float: right; text-decoration: none; color: teal">
-        <div class="card-body">
-          <h5 class="card-title">{{pro.name}} </h5>
-          <p class="card-text fw-bold">{{pro.price}}</p>
-          <p class="card-text">{{pro.nameFrequencyBand}}</p>
-          <p class="card-text">{{pro.nameSpeedWifi}}</p>
-          <p class="card-text">{{pro.nameUserConnect}}</p>
-          <p class="card-text">{{pro.nameCoverageDensity}}</p>
-        </div>
+        <a [routerLink]="['/product/detail',pro.id]" class="card-link"
+           style="float: right; text-decoration: none; color: teal">
+          <img src="{{pro.url}}" height="240" width="336"
+               alt="No image"/>
+          <div class="card-body">
+            <h5 class="card-title" style="min-height: 72px">{{pro.name}} </h5>
+            <p class="card-text fw-bold">Gía: {{pro.price | currency: 'VND-'}}</p>
+            <p class="card-text">Băng tần: {{pro.nameFrequencyBand}}</p>
+            <p class="card-text">Tốc độ: {{pro.nameSpeedWifi}}</p>
+            <p class="card-text">Hỗ trợ tối đa: {{pro.nameUserConnect}}</p>
+            <p class="card-text">Bán kính phủ sóng: {{pro.nameCoverageDensity}}</p>
+          </div>
         </a>
       </div>
     </div>
 
+  </div>
+</div>
+<div class="row" style="min-height: 60px">
+  <div *ngIf="productList?.content?.length != 0">
+    <div *ngIf="productList" class="d-flex justify-content-center" id="last-row">
+      <div>
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item" [ngClass]="productList.first ? 'disabled': ''">
+              <a role="button" class="page-link" (click)="changePage(0)" style="color: teal">Trang đầu</a>
+            </li>
+            <li class="page-item" [ngClass]="productList.first ? 'disabled': ''">
+              <a role="button" class="page-link" (click)="changePage(productList.number - 1)"><</a>
+            </li>
+            <li class="page-item" *ngIf="productList.number - 3 > 0">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number - 4)">{{productList.number - 3}}</a>
+            </li>
+            <li class="page-item" *ngIf="productList.number - 2 > 0">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number - 3)">{{productList.number - 2}}</a>
+            </li>
+            <li class="page-item" *ngIf="productList.number - 1 > 0">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number - 2)">{{productList.number - 1}}</a>
+            </li>
+            <li class="page-item" *ngIf="productList.number > 0">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number - 1)">{{productList.number}}</a>
+            </li>
+            <li class="page-item active"><a class="page-link">{{productList.number + 1}}</a></li>
+            <li class="page-item" *ngIf="productList.number + 2 <= productList.totalPages">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number + 1)">{{productList.number + 2}}</a>
+            </li>
+            <li class="page-item" *ngIf="productList.number + 3 <= productList.totalPages">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number + 2)">{{productList.number + 3}}</a>
+            </li>
+            <li class="page-item" *ngIf="productList.number + 4 <= productList.totalPages">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number + 3)">{{productList.number + 4}}</a>
+            </li>
+            <li class="page-item" *ngIf="productList.number + 5 <= productList.totalPages">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number + 4)">{{productList.number + 5}}</a>
+            </li>
+            <li class="page-item" [ngClass]="productList.last ? 'disabled': ''">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.number + 1)">></a>
+            </li>
+            <li class="page-item" [ngClass]="productList.last ? 'disabled': ''">
+              <a role="button" class="page-link"
+                 (click)="changePage(productList.totalPages - 1)" style="color: teal">
+                Trang cuối
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
   </div>
 </div>

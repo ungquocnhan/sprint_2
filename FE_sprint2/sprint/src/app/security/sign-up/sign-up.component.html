@@ -1,1 +1,206 @@
-<p>sign-up works!</p>
+<div class="row m-0">
+  <form [formGroup]="customerRegisterForm" (ngSubmit)="submit()" novalidate>
+    <div class="d-flex justify-content-center align-items-center mt-2 mb-2">
+      <div class="boxed shadow h-100 ">
+        <fieldset>
+          <legend>
+            <div>
+              <div style="margin-left: 15px; margin-top: 15px">
+                <a routerLink="/employee" type="button"><i class="fa-solid fa-arrow-left"></i></a>
+                <span style="font-size: 35px; margin-left: 180px">Đăng ký</span>
+              </div>
+            </div>
+          </legend>
+        </fieldset>
+
+        <div style="margin-top: 5px">
+          <div class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="col-4">
+                <label for="name" class="form-label ms-2">Họ và tên<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="col-8">
+                <input formControlName="name" id="name" type="text" class="form-control"
+                       placeholder="Nhập họ và tên tại đây."/>
+                <div class="text-danger"
+                     *ngIf="(customerRegisterForm.controls.name.invalid || customerRegisterForm.invalid) && customerRegisterForm.controls.name.touched else elseBlock">
+                  <span
+                    *ngIf="customerRegisterForm.controls.name.hasError('required')">Họ và tên không được để trống.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.name.hasError('pattern')">Họ và tên phải ghi hoa chữ cái đầu tiên.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.name.hasError('minlength')">Họ và tên phải lớn hơn 3 kí tự.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.name.hasError('maxlength')">Họ và tên không quá 50 kí tự.</span>
+                </div>
+                <ng-template #elseBlock><br></ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="col-4">
+                <label for="email" class="form-label ms-2">Email<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="col-8">
+                <input formControlName="email" id="email" type="email" class="form-control"
+                       placeholder="Nhập email tại đây."/>
+                <div class="text-danger"
+                     *ngIf="customerRegisterForm.controls.email.invalid && customerRegisterForm.controls.email.touched else elseBlock">
+                  <span
+                    *ngIf="customerRegisterForm.controls.email.hasError('required')">Email không được để trống.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.email.hasError('email')">Email không đúng định dạng.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.email.hasError('minlength')">Email phải lớn hơn 3 kí tự.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.email.hasError('maxlength')">Email không quá 50 kí tự.</span>
+                </div>
+                <ng-template #elseBlock><br></ng-template>
+                <!--                <span-->
+                <!--                  *ngIf="customerRegisterForm.errors?.checkEmail && customerRegisterForm.controls['email'].touched"-->
+                <!--                  style="color: red">-->
+                <!--                Email đã tồn tại.-->
+                <!--                    </span>-->
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="col-4">
+                <label for="password" class="form-label ms-2">Mật khẩu<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="col-8">
+                <input formControlName="encryptPassword" id="password" type="password" class="form-control"
+                       placeholder="Nhập mật khẩu tại đây."/>
+                <div class="text-danger"
+                     *ngIf="customerRegisterForm.controls.encryptPassword.invalid && customerRegisterForm.controls.encryptPassword.touched else elseBlock">
+                  <span
+                    *ngIf="customerRegisterForm.controls.encryptPassword.hasError('required')">Mật khẩu không được để trống.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.encryptPassword.hasError('minlength')">Mật khẩu tối thiểu là 6 kí tự.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.encryptPassword.hasError('maxlength')">Mật khẩu không quá 50 kí tự.</span>
+                </div>
+                <ng-template #elseBlock><br></ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="col-4">
+                <label for="birthday" class="form-label ms-2">Ngày sinh<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="col-8">
+                <input formControlName="birthday" id="birthday" type="date" class="form-control"/>
+                <div class="text-danger"
+                     *ngIf="customerRegisterForm.controls.birthday.invalid && customerRegisterForm.controls.birthday.touched else elseBlock">
+                <span
+                  *ngIf="customerRegisterForm.controls.birthday.hasError('required')">Ngày sinh không được để trống.</span>
+                </div>
+                <span *ngIf="customerRegisterForm.hasError('checkBirthDay')" style="color: red">
+                Ngày sinh nằm trong khoảng 18 đến 65.
+              </span>
+              </div>
+              <ng-template #elseBlock><br></ng-template>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex mb-2 mt-3 w-100">
+              <div class="col-4">
+                <label class="form-label ms-2">Giới tính<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="d-flex align-items-center mb-2 col-8">
+
+                <div class="col-4">
+                  <input class="me-2" type="radio" id="male" [value]="true" formControlName="gender">
+                  <label for="male">Nam</label><br>
+                </div>
+                <div class="col-4">
+                  <input class="me-2" type="radio" id="female" [value]="false" formControlName="gender">
+                  <label for="female"> Nữ</label><br>
+                </div>
+              </div>
+            </div>
+            <div class="text-danger" style="margin-left: 220px"
+                 *ngIf="customerRegisterForm.controls.gender.touched else elseBlock">
+              <p *ngIf="customerRegisterForm.controls.gender.hasError('required')">Giới tính không được trống.</p>
+            </div>
+            <ng-template #elseBlock><br></ng-template>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="col-4">
+                <label for="phone" class="form-label ms-2">Số điện thoại<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="col-8">
+                <input formControlName="phoneNumber" id="phone" type="text" class="form-control"
+                       placeholder="Nhập số điện thoại tại đây."/>
+                <div class="text-danger"
+                     *ngIf="customerRegisterForm.controls.phoneNumber.invalid && customerRegisterForm.controls.phoneNumber.touched else elseBlock">
+                  <span
+                    *ngIf="customerRegisterForm.controls.phoneNumber.hasError('required')">SDT không được để trống.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.phoneNumber.hasError('pattern')">SDT chưa đúng định dạng.</span>
+                </div>
+                <ng-template #elseBlock><br></ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="col-4">
+                <label for="idNumber" class="form-label ms-2">CCCD<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="col-8">
+                <input formControlName="idNumber" id="idNumber" type="text" class="form-control"
+                       placeholder="Nhập số căn cước công dân tại đây."/>
+                <div class="text-danger"
+                     *ngIf="customerRegisterForm.controls.idNumber.invalid && customerRegisterForm.controls.idNumber.touched else elseBlock">
+                  <span
+                    *ngIf="customerRegisterForm.controls.idNumber.hasError('required')">Số CCCD không được trống.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.idNumber.hasError('pattern')">Số CCCD chưa đúng định dạng.</span>
+                </div>
+                <ng-template #elseBlock><br></ng-template>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-2">
+            <div class="d-flex align-items-center mb-2">
+              <div class="col-4">
+                <label for="address" class="form-label ms-2">Địa chỉ<span style="color: red"> (*)</span>:</label>
+              </div>
+              <div class="col-8">
+                <input formControlName="address" id="address" type="text" class="form-control"
+                       placeholder="Nhập địa chỉ tại đây."/>
+                <div class="text-danger" *ngIf="customerRegisterForm.controls.address.touched else elseBlock">
+                  <span
+                    *ngIf="customerRegisterForm.controls.address.hasError('required')">Địa chỉ không được để trống.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.address.hasError('minlength')">Địa chỉ tối thiểu là 6 kí tự.</span>
+                  <span
+                    *ngIf="customerRegisterForm.controls.address.hasError('maxlength')">Địa chỉ không quá 100 kí tự.</span>
+                </div>
+                <ng-template #elseBlock><br></ng-template>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="d-flex justify-content-center" style="margin-bottom: 15px">
+          <button type="submit" class="btn btn-primary">Đăng kí</button>
+          <input style="margin-left: 15px" type="reset" class="btn btn-light" value="Nhập lại">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+

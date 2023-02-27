@@ -8,6 +8,8 @@ import {HomeModule} from './home/home.module';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthInterceptor} from './service/interceptor/auth.interceptor';
+import {RouterModule} from '@angular/router';
+import {CarouselModule} from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import {AuthInterceptor} from './service/interceptor/auth.interceptor';
     HomeModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    RouterModule,
+    CarouselModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

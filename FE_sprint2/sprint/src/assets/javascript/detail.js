@@ -2,6 +2,7 @@ let imgFeature = document.querySelector('.img-feature')
 let listImg = document.querySelectorAll('.list-image img')
 let prevBtn = document.querySelector('.prev')
 let nextBtn = document.querySelector('.next')
+console.log(imgFeature)
 console.log(listImg)
 let currentIndex = 0;
 
