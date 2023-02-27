@@ -45,7 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.cors().and().csrf().disable()// huỷ CrossOrigin
                 .authorizeRequests()
-                .antMatchers("/**") // cho tất cả các role vào
+                .antMatchers("/api/public/**") // cho tất cả các role vào
                 .permitAll()
                 .anyRequest()
                 .authenticated()// khi có account đăng nhập
