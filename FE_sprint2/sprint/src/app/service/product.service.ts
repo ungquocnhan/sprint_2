@@ -9,8 +9,8 @@ import {ProductInfo} from '../model/interface/product-info';
   providedIn: 'root'
 })
 export class ProductService {
-  URL_PRODUCT = 'http://localhost:8080/api/products';
-  URL_IMAGEPRODUCT = 'http://localhost:8080/images';
+  URL_PRODUCT = 'http://localhost:8080/api/public/products';
+  URL_IMAGEPRODUCT = 'http://localhost:8080/api/public/images';
 
   constructor(private httpClient: HttpClient) {
   }
