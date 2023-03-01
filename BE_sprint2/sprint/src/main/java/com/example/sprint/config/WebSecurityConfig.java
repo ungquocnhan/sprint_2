@@ -48,9 +48,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/public/**") // cho tất cả các role vào
                 .permitAll()
                 .antMatchers("/api/user/**")
-                .hasAnyRole("USER", "ADMIN")
+                .hasAnyRole("ROLE_USER", "ROLE_ADMIN")
                 .antMatchers("/api/admin/**")
-                .hasRole("ADMIN")
+                .hasRole("ROLE_ADMIN")
                 .anyRequest()
                 .authenticated()// khi có account đăng nhập
                 .and()
