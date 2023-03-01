@@ -4,6 +4,7 @@ import {ProductService} from '../../service/product.service';
 import {ImageProducts} from '../../model/interface/image-products';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {ProductInfo} from '../../model/interface/product-info';
+import {SearchService} from '../../service/search.service';
 
 @Component({
   selector: 'app-home',
@@ -40,8 +41,9 @@ export class HomeComponent implements OnInit {
   productList!: ProductInfoJson;
   request = {page: 0, size: 8};
   imageList: ProductInfo[] = [];
-
-  constructor(private productService: ProductService) {
+  valueSearch = '';
+  constructor(private productService: ProductService,
+              private searchService: SearchService) {
   }
 
   ngOnInit(): void {
@@ -50,11 +52,12 @@ export class HomeComponent implements OnInit {
       console.log(data);
       this.imageList = data;
     });
+    this.searchService.getValue().subscribe(value => this.valueSearch = value);
   }
 
 
   getAllProduct(request: {page: number, size: number} | undefined): void {
-    this.productService.getAll(request).subscribe(data => {
+    this.productService.getAll(this.valueSearch, request).subscribe(data => {
       this.productList = data;
     });
   }

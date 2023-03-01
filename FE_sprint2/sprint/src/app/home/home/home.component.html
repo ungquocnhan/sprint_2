@@ -8,7 +8,7 @@
           <div class="card">
             <a [routerLink]="['/product/detail',slide.id]" class="card-link"
                style="float: right; text-decoration: none; color: teal">
-              <img src="{{slide.url}}" height="240" width="336"
+              <img src="{{slide.url}}" height="240" width="100%"
                    alt="No image"/>
               <div class="card-body">
                 <h5 class="card-title" style="min-height: 72px;">{{slide.name}} </h5>
@@ -30,7 +30,7 @@
       <div class="card">
         <a [routerLink]="['/product/detail',pro.id]" class="card-link"
            style="float: right; text-decoration: none; color: teal">
-          <img src="{{pro.url}}" height="240" width="336"
+          <img src="{{pro.url}}" height="240" width="100%"
                alt="No image"/>
           <div class="card-body">
             <h5 class="card-title" style="min-height: 72px">{{pro.name}} </h5>

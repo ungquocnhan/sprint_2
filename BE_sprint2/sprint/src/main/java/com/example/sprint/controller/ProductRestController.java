@@ -21,8 +21,9 @@ public class ProductRestController {
     private IProductService productService;
 
     @GetMapping("")
-    public ResponseEntity<Page<ProductInfo>> getAll(@PageableDefault(size = 8) Pageable pageable) {
-        Page<ProductInfo> productInfoPage = productService.getAll(pageable);
+    public ResponseEntity<Page<ProductInfo>> getAll(@RequestParam(defaultValue = "") String name, @PageableDefault(size = 8) Pageable pageable) {
+//        Page<ProductInfo> productInfoPage = productService.getAll(pageable);
+        Page<ProductInfo> productInfoPage = productService.search(name, pageable);
         return new ResponseEntity<>(productInfoPage, HttpStatus.OK);
     }
 

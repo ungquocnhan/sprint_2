@@ -73,7 +73,7 @@ public class SecurityController {
         account.setAvatar("hello");
         account.setEncryptPassword(passwordEncoder.encode(customerDto.getEncryptPassword()));
         Set<Role> roles = new HashSet<>();
-        Role customerRole = roleService.findByName(RoleName.USER).orElse(new Role());
+        Role customerRole = roleService.findByName(RoleName.ROLE_USER).orElse(new Role());
 
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("nhan09skbk@gmail.com");

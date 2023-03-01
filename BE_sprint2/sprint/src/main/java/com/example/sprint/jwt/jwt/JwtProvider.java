@@ -34,10 +34,8 @@ public class JwtProvider {
             logger.error("Unsupported JWT token -> Message: {Token không hộ trợ}", e);
         } catch (MalformedJwtException e) {
             logger.error("The token invalid format -> Message: {Token không đúng định dạng}", e);
-
         } catch (SignatureException e) {
             logger.error("Invalid JWT Signature -> Message: {Token không hợp lệ}", e);
-
         } catch (IllegalArgumentException e) {
             logger.error("JWT claims string is empty -> Message: {Token có khoảng trắng}", e);
         } catch (ExpiredJwtException e) {

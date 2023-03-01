@@ -25,27 +25,55 @@
             <i class="fas fa-bars"></i>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarButtonsOne">
+          <div class="collapse navbar-collapse" id="navbarButtons">
+            <a class="navbar-brand me-2" routerLink="/home" style="font-size: 200%; color: #8C5B07">routerwifiuqn.vn</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link" href="#">Lịch sử giao dịch</a>
+                <a class="nav-link color-weight" href="#" *ngIf="roles[0]== 'ROLE_ADMIN' && checkLogin">Thống kê</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Kiểm tra đơn hàng</a>
+                <a class="nav-link color-weight" href="#" *ngIf="roles[0]== 'ROLE_ADMIN' && checkLogin">Thêm mới</a>
               </li>
             </ul>
 
             <div class="d-flex align-items-center">
-              <a class="btn btn-white px-3 me-2" href="#"
+              <a class="btn btn-white px-3 me-2 color-weight" href="#" *ngIf="roles[0]=='ROLE_USER' && checkLogin"
                  type="button"><i class="fa-regular fa-cart-shopping-fast"></i> Giỏ hàng</a>
-              <a type="button" class="btn btn-white px-3 me-2" routerLink="/security/signin">
+              <a type="button" class="btn btn-white px-3 me-2 color-weight" routerLink="/security/signin" *ngIf="!checkLogin">
                 Đăng nhập
               </a>
-              <a type="button" class="btn btn-white px-3 me-3" routerLink="/security/signup">
+              <a type="button" class="btn btn-white px-3 me-3 color-weight" routerLink="/security/signup" *ngIf="!checkLogin">
                 Đăng kí
               </a>
-              <a type="button" class="btn btn-white px-3 me-3" data-bs-toggle="modal" data-bs-target="#logout">Đăng xuất</a>
+            </div>
+            <div *ngIf="roles[0]=='ROLE_USER' && checkLogin">
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="navbar-brand color-weight text-center" *ngIf="checkLogin">{{name}}</span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Lịch sử giao dịch</a></li>
+                  <li><a class="dropdown-item" href="#">Kiểm tra đơn hàng</a></li>
+                  <li><a class="dropdown-item" href="#">Cập nhật thông tin</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logout">Đăng xuất</a></li>
+                </ul>
+              </div>
+            </div>
 
+            <div *ngIf="roles[0]=='ROLE_ADMIN' && checkLogin">
+              <div class="dropdown">
+                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <!--                  <i class="fa-regular fa-user"></i>-->
+                  <span *ngIf="checkLogin"><span class="navbar-brand color-weight"
+                                                 *ngIf="checkLogin">{{name}}</span> </span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#"></a></li>
+                  <li><a class="dropdown-item" href="#"></a></li>
+                  <li><a class="dropdown-item" href="#"></a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logout">Đăng xuất</a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -62,8 +90,8 @@
             class="navbar-toggler"
             type="button"
             data-mdb-toggle="collapse"
-            data-mdb-target="#navbarButtonsExample"
-            aria-controls="navbarButtonsExample"
+            data-mdb-target="#navbarButtonsOneExample"
+            aria-controls="navbarButtonsOneExample"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
@@ -71,7 +99,7 @@
           </button>
 
           <!-- Collapsible wrapper -->
-          <div class="collapse navbar-collapse" id="navbarButtonsTwo">
+          <div class="collapse navbar-collapse" id="navbarButtonsOne">
             <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
@@ -96,8 +124,9 @@
                   class="form-control rounded"
                   placeholder="Tìm kiếm"
                   aria-label="Search"
+                  #searchInput
                 />
-                <button class="btn btn-outline-secondary" type="button">
+                <button class="btn btn-outline-secondary" type="button" (click)="search(searchInput.value)">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </form>
@@ -110,7 +139,9 @@
       <!-- Navbar -->
     </div>
   </div>
+  <hr>
 </header>
+
 <!-- Modal logout-->
 <div class="modal fade" id="logout" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
   <div class="modal-dialog">

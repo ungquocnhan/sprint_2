@@ -24,4 +24,9 @@ public class ProductService implements IProductService {
     public Optional<Product> findById(Integer id) {
         return productRepository.findById(id);
     }
+
+    @Override
+    public Page<ProductInfo> search(String name, Pageable pageable) {
+        return productRepository.search(name, pageable);
+    }
 }
