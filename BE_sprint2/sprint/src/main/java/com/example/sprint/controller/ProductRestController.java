@@ -35,4 +35,16 @@ public class ProductRestController {
         }
         return new ResponseEntity<>(product.get(), HttpStatus.OK);
     }
+
+    @GetMapping("/promotion")
+    public ResponseEntity<Page<ProductInfo>> getProductPromotion(@PageableDefault(size = 8) Pageable pageable) {
+        Page<ProductInfo> productInfoPage = productService.getProductPromotion(pageable);
+        return new ResponseEntity<>(productInfoPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/special")
+    public ResponseEntity<Page<ProductInfo>> getProductPromotionSpecial(@PageableDefault(size = 8) Pageable pageable) {
+        Page<ProductInfo> productInfoPage = productService.getProductPromotionSpecial(pageable);
+        return new ResponseEntity<>(productInfoPage, HttpStatus.OK);
+    }
 }

@@ -14,4 +14,9 @@ public interface IProductService {
     Optional<Product> findById(Integer id);
 
     Page<ProductInfo> search(String name, Pageable pageable);
+
+    Page<ProductInfo> getProductPromotion(Pageable pageable);
+
+    Page<ProductInfo> getProductPromotionSpecial(Pageable pageable);
+
 }

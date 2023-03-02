@@ -16,4 +16,8 @@ public interface ProductInfo {
     String getNameSpeedWifi();
 
     String getUrl();
+
+    String getNameManufacture();
+
+    Double getPercentPromotion();
 }

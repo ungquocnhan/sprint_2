@@ -1,17 +1,16 @@
-import {Component, OnInit} from '@angular/core';
-import {ProductInfoJson} from '../../model/interface/product-info-json';
-import {ProductService} from '../../service/product.service';
-import {ImageProducts} from '../../model/interface/image-products';
+import { Component, OnInit } from '@angular/core';
 import {OwlOptions} from 'ngx-owl-carousel-o';
+import {ProductInfoJson} from '../../model/interface/product-info-json';
 import {ProductInfo} from '../../model/interface/product-info';
+import {ProductService} from '../../service/product.service';
 import {SearchService} from '../../service/search.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-product-promotion',
+  templateUrl: './product-promotion.component.html',
+  styleUrls: ['./product-promotion.component.css']
 })
-export class HomeComponent implements OnInit {
+export class ProductPromotionComponent implements OnInit {
   customOptions: OwlOptions = {
     loop: true,
     mouseDrag: false,
@@ -42,6 +41,7 @@ export class HomeComponent implements OnInit {
   request = {page: 0, size: 8};
   imageList: ProductInfo[] = [];
   valueSearch = '';
+
   constructor(private productService: ProductService,
               private searchService: SearchService) {
   }
@@ -60,8 +60,7 @@ export class HomeComponent implements OnInit {
 
 
   getAllProduct(request: { page: number, size: number } | undefined): void {
-    this.productService.getAll(this.valueSearch, request).subscribe(data => {
-      console.log(data);
+    this.productService.getProductPromotion(request).subscribe(data => {
       this.productList = data;
     });
   }
@@ -70,4 +69,5 @@ export class HomeComponent implements OnInit {
     this.request.page = pageNumber;
     this.getAllProduct(this.request);
   }
+
 }

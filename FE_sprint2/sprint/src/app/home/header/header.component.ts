@@ -3,6 +3,8 @@ import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {TokenService} from '../../service/token.service';
 import {SearchService} from '../../service/search.service';
+import {ProductService} from '../../service/product.service';
+import {Manufacture} from '../../model/interface/manufacture';
 const script = document.createElement('script');
 script.src = '../../../assets/javascript/header.js';
 document.body.appendChild(script);
@@ -17,10 +19,12 @@ export class HeaderComponent implements OnInit {
   roles: string[] = [];
   idAccount: string | null | undefined;
   valueSearch = '';
+  manufactureList: Manufacture[] = [];
   constructor(private router: Router,
               private toast: ToastrService,
               private tokenService: TokenService,
-              private searchService: SearchService) {
+              private searchService: SearchService,
+              private productService: ProductService) {
   }
 
   ngOnInit(): void {
@@ -30,6 +34,10 @@ export class HeaderComponent implements OnInit {
       this.roles = this.tokenService.getRole();
       this.idAccount = this.tokenService.getId();
     }
+    this.productService.getAllManufacture().subscribe(data => {
+      console.log(data);
+      this.manufactureList = data;
+    });
   }
 
   logOut(): void {
@@ -43,8 +51,7 @@ export class HeaderComponent implements OnInit {
   }
 
   search(searchInput: string): void {
-    this.valueSearch = searchInput;
-    console.log(this.valueSearch);
-    this.searchService.setValue(this.valueSearch);
+    this.searchService.setValue(searchInput);
+    this.router.navigateByUrl('/home');
   }
 }

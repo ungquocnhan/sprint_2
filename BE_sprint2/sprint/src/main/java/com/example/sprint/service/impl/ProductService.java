@@ -15,6 +15,7 @@ import java.util.Optional;
 public class ProductService implements IProductService {
     @Autowired
     private IProductRepository productRepository;
+
     @Override
     public Page<ProductInfo> getAll(Pageable pageable) {
         return productRepository.getAll(pageable);
@@ -27,6 +28,18 @@ public class ProductService implements IProductService {
 
     @Override
     public Page<ProductInfo> search(String name, Pageable pageable) {
-        return productRepository.search(name, pageable);
+        return productRepository.search(name, name, pageable);
     }
+
+    @Override
+    public Page<ProductInfo> getProductPromotion(Pageable pageable) {
+        return productRepository.getProductPromotion(pageable);
+    }
+
+    @Override
+    public Page<ProductInfo> getProductPromotionSpecial(Pageable pageable) {
+        return productRepository.getProductPromotionSpecial(pageable);
+    }
+
+
 }

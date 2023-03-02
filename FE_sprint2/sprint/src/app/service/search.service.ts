@@ -8,7 +8,7 @@ export class SearchService {
   private resultSearch: BehaviorSubject<any> = new BehaviorSubject<any>('');
   constructor() { }
 
-  setValue(value: any): void {
+  setValue(value: string): void {
     this.resultSearch.next(value);
   }
 

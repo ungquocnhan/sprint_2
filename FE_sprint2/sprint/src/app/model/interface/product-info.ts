@@ -7,4 +7,5 @@ export interface ProductInfo {
   nameUserConnect?: string;
   nameSpeedWifi?: string;
   url?: string;
+  percentPromotion: number;
 }

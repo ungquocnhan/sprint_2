@@ -1,4 +1,5 @@
 import {ImageProducts} from './image-products';
+import {Manufacture} from './manufacture';
 
 interface Port {
   id?: number;
@@ -47,11 +48,6 @@ interface UserConnect {
 }
 
 interface CoverageDensity {
-  id?: number;
-  name?: string;
-}
-
-interface Manufacture {
   id?: number;
   name?: string;
 }
