@@ -62,4 +62,7 @@ public class Product {
     private boolean flagDeleted = false;
     @Column(columnDefinition = "bit")
     private boolean flagPromoted = false;
+    @OneToMany(mappedBy = "product")
+    @JsonBackReference
+    private List<CartDetail> cartDetailList;
 }

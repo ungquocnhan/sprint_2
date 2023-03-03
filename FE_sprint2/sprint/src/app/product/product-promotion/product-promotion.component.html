@@ -34,8 +34,8 @@
                alt="No image"/>
           <div class="card-body">
             <h5 class="card-title" style="min-height: 72px">{{pro.name}} </h5>
-            <p *ngIf="pro.percentPromotion != 0 else blockPromotion" class="card-text fw-bold">Giá: {{pro.price - pro.percentPromotion * pro.price | number}} VND</p>
-            <ng-template #blockPromotion>Giá: {{pro.price | number}} VND</ng-template>
+            <p *ngIf="pro.percentPromotion != 0 else blockPromotion" class="card-text fw-bold">Giá: {{pro?.price - pro?.percentPromotion * pro?.price | number}} VND <sup class="text-danger">-{{pro.percentPromotion * 100}}%</sup></p>
+            <ng-template #blockPromotion>Giá: {{pro?.price | number}} VND</ng-template>
             <p class="card-text">Băng tần: {{pro.nameFrequencyBand}}</p>
             <p class="card-text">Tốc độ: {{pro.nameSpeedWifi}}</p>
             <p class="card-text">Hỗ trợ tối đa: {{pro.nameUserConnect}}</p>

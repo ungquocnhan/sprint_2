@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {Product} from '../model/interface/product';
 import {ProductInfo} from '../model/interface/product-info';
 import {Manufacture} from '../model/interface/manufacture';
+import {ImageProducts} from '../model/interface/image-products';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +33,10 @@ export class ProductService {
 
   getAllImage(): Observable<ProductInfo[]> {
     return this.httpClient.get<ProductInfo[]>(this.URL_IMAGEPRODUCT);
+  }
+
+  getImageProductById(id: number): Observable<ImageProducts[]> {
+    return this.httpClient.get<ImageProducts[]>(this.URL_IMAGEPRODUCT + '/' + id);
   }
 
   getAllManufacture(): Observable<Manufacture[]> {

@@ -1,10 +1,13 @@
 package com.example.sprint.dto;
 
+import com.example.sprint.model.Customer;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
+import java.util.Optional;
+
 @Getter
 @Setter
 public class JwtResponse {
@@ -14,6 +17,7 @@ public class JwtResponse {
     private String name;
     private String avatar;
     private String email;
+    private Optional<GetIdCustomer> idCustomer;
     private Collection<? extends GrantedAuthority> roles;
 
     public JwtResponse() {
@@ -29,13 +33,14 @@ public class JwtResponse {
         this.roles = roles;
     }
 
-    public JwtResponse(String token, String name, Collection<? extends GrantedAuthority> authorities, Integer id, String email, String avatar) {
+    public JwtResponse(String token, String name, Collection<? extends GrantedAuthority> authorities, Integer id, String email, String avatar, Optional<GetIdCustomer> idCustomer) {
         this.token = token;
         this.name = name;
         this.roles = authorities;
         this.id = id;
         this.email = email;
         this.avatar = avatar;
+        this.idCustomer = idCustomer;
     }
 
     public Integer getId() {

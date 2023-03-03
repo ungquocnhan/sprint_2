@@ -1,6 +1,5 @@
 package com.example.sprint.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,24 +9,17 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Oder {
+public class CartDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String code;
-    @Column(columnDefinition = "date")
-    private String dateOrder;
-    private boolean status = false;
-    private boolean statusPay = false;
-    private String address;
-    private String phoneNumber;
+    private Integer amount;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -37,13 +29,8 @@ public class Oder {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_date")
     private Date modifyDate;
-    @Column(columnDefinition = "text")
-    private String note;
-    @OneToOne
-    private Customer customer;
-    @OneToMany(mappedBy = "oder")
-    @JsonBackReference
-    private List<OrderDetail> orderDetaiList;
-    @Column(columnDefinition = "bit default false")
-    private boolean flagDeleted;
+    @ManyToOne
+    private Product product;
+    @ManyToOne
+    private Cart cart;
 }

@@ -1,15 +1,13 @@
 package com.example.sprint.controller;
 
 import com.example.sprint.dto.CustomerDto;
+import com.example.sprint.dto.GetIdCustomer;
 import com.example.sprint.dto.JwtResponse;
 import com.example.sprint.dto.SignInForm;
 import com.example.sprint.jwt.jwt.JwtProvider;
 import com.example.sprint.jwt.jwt.JwtTokenFilter;
 import com.example.sprint.jwt.user_principal.AccountPrincipal;
-import com.example.sprint.model.Account;
-import com.example.sprint.model.Customer;
-import com.example.sprint.model.Role;
-import com.example.sprint.model.RoleName;
+import com.example.sprint.model.*;
 import com.example.sprint.service.ICustomerService;
 import com.example.sprint.service.IRoleService;
 import com.example.sprint.service.impl.AccountService;
@@ -29,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @RestController
@@ -57,6 +56,8 @@ public class SecurityController {
     private ICustomerService customerService;
     @Autowired
     private JavaMailSender mailSender;
+    @Autowired
+    private CartRepository cartRepository;
 
     @PostMapping(value = "/signup")
     public ResponseEntity<Customer> register(@Valid @RequestBody CustomerDto customerDto,
@@ -70,7 +71,7 @@ public class SecurityController {
         Account account = new Account();
         account.setName(customerDto.getName());
         account.setEmail(customerDto.getEmail());
-        account.setAvatar("hello");
+        account.setAvatar("https://upload.wikimedia.org/wikipedia/en/b/bd/Doraemon_character.png");
         account.setEncryptPassword(passwordEncoder.encode(customerDto.getEncryptPassword()));
         Set<Role> roles = new HashSet<>();
         Role customerRole = roleService.findByName(RoleName.ROLE_USER).orElse(new Role());
@@ -108,11 +109,13 @@ public class SecurityController {
 
         String token = jwtProvider.createToken(authentication);
         AccountPrincipal accountPrincipal = (AccountPrincipal) authentication.getPrincipal();
+        Optional<GetIdCustomer> idCustomer = customerService.findByEmail(signInForm.getEmail());
         return ResponseEntity.ok(new JwtResponse(token,
                 accountPrincipal.getName(),
                 accountPrincipal.getAuthorities(),
                 accountPrincipal.getId(),
                 accountPrincipal.getEmail(),
-                accountPrincipal.getAvatar()));
+                accountPrincipal.getAvatar(),
+                idCustomer));
     }
 }

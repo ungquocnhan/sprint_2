@@ -5,16 +5,24 @@ const ROLE_KEY = 'Role_key';
 const AVATAR_KEY = 'Avatar_key';
 const ID_KEY = 'Id_key';
 const EMAIL_KEY = 'Email_key';
+const CUSTOMER_ID_KEY = 'Customer_Id_key';
 @Injectable({
   providedIn: 'root'
 })
 export class TokenService {
 
-  public roles = [];
+  roles: any[] = [];
 
   constructor() {
   }
+  public setIdCustomer(idCustomer: string): void {
+    localStorage.removeItem(CUSTOMER_ID_KEY);
+    localStorage.setItem(CUSTOMER_ID_KEY, idCustomer);
+  }
 
+  public getIdCustomer(): string | null {
+    return localStorage.getItem(CUSTOMER_ID_KEY);
+  }
   public setEmail(email: string): void {
     localStorage.removeItem(EMAIL_KEY);
     localStorage.setItem(EMAIL_KEY, email);

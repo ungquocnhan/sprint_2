@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IImageProductService {
     List<ProductInfo> getAll();
+
+    List<ImageProduct> getImageProductById(Integer id);
 }

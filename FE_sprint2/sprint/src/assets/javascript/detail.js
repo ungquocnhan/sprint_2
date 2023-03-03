@@ -51,3 +51,5 @@ nextBtn.addEventListener('click', e => {
     imgFeature.style.animation = 'slideRight 1s ease-in-out forwards'
   }, 200)
 })
+
+

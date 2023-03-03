@@ -12,7 +12,7 @@
 }
 
 .img-feature {
-  transition: 2s;
+  transition: 500ms;
 }
 
 .list-image {
@@ -81,4 +81,14 @@ img {
   padding: 5px 10px;
   margin: 5px 25px;
   text-align: justify;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-input {
+  width: 40px;
+  text-align: center;
 }

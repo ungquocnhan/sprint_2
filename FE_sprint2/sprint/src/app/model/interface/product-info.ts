@@ -1,11 +1,11 @@
 export interface ProductInfo {
   id?: number;
   name?: string;
-  price?: number;
+  price?: number | undefined;
   nameFrequencyBand?: string;
   nameCoverageDensity?: string;
   nameUserConnect?: string;
   nameSpeedWifi?: string;
   url?: string;
-  percentPromotion: number;
+  percentPromotion: number | undefined;
 }

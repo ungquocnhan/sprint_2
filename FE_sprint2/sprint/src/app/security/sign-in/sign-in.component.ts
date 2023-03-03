@@ -43,6 +43,7 @@ export class SignInComponent implements OnInit {
   login(): void {
     const signInForm = this.signInForm?.value;
     this.securityService.signIn(signInForm).subscribe(data => {
+        console.log(data);
         if (data.token !== undefined) {
           if (this.signInForm?.value.rememberMe) {
             this.tokenService.rememberMe(data.roles, data.name, data.token);
@@ -51,6 +52,8 @@ export class SignInComponent implements OnInit {
             this.tokenService.setToken(data.token);
             this.tokenService.setName(data.name);
             this.tokenService.setRole(data.roles);
+            this.tokenService.setAvatar(data.avatar);
+            this.tokenService.setIdCustomer(data.idCustomer.idCustomer);
             this.statusRole = data.roles;
             this.tokenService.setEmail(data.email);
             this.tokenService.setId(data.id);

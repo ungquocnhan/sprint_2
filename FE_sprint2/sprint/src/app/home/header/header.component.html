@@ -37,8 +37,11 @@
             </ul>
 
             <div class="d-flex align-items-center">
-              <a class="btn btn-white px-3 me-2 color-weight" href="#" *ngIf="roles[0]=='ROLE_USER' && checkLogin"
-                 type="button"><i class="fa-regular fa-cart-shopping-fast"></i> Giỏ hàng</a>
+              <a class="btn btn-white px-3 me-2 color-weight" routerLink="/cart" *ngIf="roles[0]=='ROLE_USER' && checkLogin"
+                 type="button" ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart-plus" viewBox="0 0 16 16">
+                <path d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9V5.5z"/>
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+              </svg> Giỏ hàng</a>
               <a type="button" class="btn btn-white px-3 me-2 color-weight" routerLink="/security/signin" *ngIf="!checkLogin">
                 Đăng nhập
               </a>
@@ -48,9 +51,9 @@
             </div>
             <div *ngIf="roles[0]=='ROLE_USER' && checkLogin">
               <div class="dropdown">
-                <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <span class="navbar-brand color-weight text-center" *ngIf="checkLogin">{{name}}</span>
-                </button>
+                <a class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <span class="navbar-brand " *ngIf="checkLogin"><img src="{{avatar}}" alt="" style="border-radius: 50%; height: 40px; width: 40px"></span>
+                </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item" href="#">Lịch sử giao dịch</a></li>
                   <li><a class="dropdown-item" href="#">Kiểm tra đơn hàng</a></li>
@@ -64,8 +67,9 @@
               <div class="dropdown">
                 <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                   <!--                  <i class="fa-regular fa-user"></i>-->
-                  <span *ngIf="checkLogin"><span class="navbar-brand color-weight"
-                                                 *ngIf="checkLogin">{{name}}</span> </span>
+                  <span *ngIf="checkLogin"><span class="navbar-brand rounded-circle icon-sm icon border "
+                                                 *ngIf="checkLogin"><img src="{{avatar}}" style="border-radius: 50%; height: 40px; width: 40px" alt=""></span> </span>
+
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item" href="#"></a></li>

@@ -18,4 +18,11 @@ public class ImageProductService implements IImageProductService {
     public List<ProductInfo> getAll() {
         return imageProductRepository.getAll();
     }
+
+    @Override
+    public List<ImageProduct> getImageProductById(Integer id) {
+        return imageProductRepository.getImageProductById(id);
+    }
+
+
 }

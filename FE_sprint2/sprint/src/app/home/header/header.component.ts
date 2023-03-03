@@ -5,9 +5,11 @@ import {TokenService} from '../../service/token.service';
 import {SearchService} from '../../service/search.service';
 import {ProductService} from '../../service/product.service';
 import {Manufacture} from '../../model/interface/manufacture';
+
 const script = document.createElement('script');
 script.src = '../../../assets/javascript/header.js';
 document.body.appendChild(script);
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -20,6 +22,8 @@ export class HeaderComponent implements OnInit {
   idAccount: string | null | undefined;
   valueSearch = '';
   manufactureList: Manufacture[] = [];
+  avatar: string | null | undefined;
+
   constructor(private router: Router,
               private toast: ToastrService,
               private tokenService: TokenService,
@@ -33,6 +37,7 @@ export class HeaderComponent implements OnInit {
       this.name = this.tokenService.getName();
       this.roles = this.tokenService.getRole();
       this.idAccount = this.tokenService.getId();
+      this.avatar = this.tokenService.getAvatar();
     }
     this.productService.getAllManufacture().subscribe(data => {
       console.log(data);

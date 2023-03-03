@@ -42,6 +42,8 @@ export class HomeComponent implements OnInit {
   request = {page: 0, size: 8};
   imageList: ProductInfo[] = [];
   valueSearch = '';
+  total = 0;
+
   constructor(private productService: ProductService,
               private searchService: SearchService) {
   }
@@ -62,7 +64,9 @@ export class HomeComponent implements OnInit {
   getAllProduct(request: { page: number, size: number } | undefined): void {
     this.productService.getAll(this.valueSearch, request).subscribe(data => {
       console.log(data);
-      this.productList = data;
+      if (data !== undefined) {
+        this.productList = data;
+      }
     });
   }
 

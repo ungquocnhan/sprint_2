@@ -17,17 +17,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Oder {
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String code;
-    @Column(columnDefinition = "date")
-    private String dateOrder;
-    private boolean status = false;
-    private boolean statusPay = false;
-    private String address;
-    private String phoneNumber;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date")
@@ -37,13 +30,9 @@ public class Oder {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "modify_date")
     private Date modifyDate;
-    @Column(columnDefinition = "text")
-    private String note;
     @OneToOne
     private Customer customer;
-    @OneToMany(mappedBy = "oder")
+    @OneToMany(mappedBy = "cart")
     @JsonBackReference
-    private List<OrderDetail> orderDetaiList;
-    @Column(columnDefinition = "bit default false")
-    private boolean flagDeleted;
+    private List<CartDetail> cartDetailList;
 }
