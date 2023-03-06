@@ -1,7 +1,6 @@
 package com.example.sprint.service.impl;
 
-import com.example.sprint.model.CartDetail;
-import com.example.sprint.model.CartRepository;
+import com.example.sprint.model.Cart;
 import com.example.sprint.repository.ICartRepository;
 import com.example.sprint.service.ICartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,7 @@ public class CartService implements ICartService {
     private ICartRepository cartRepository;
 
     @Override
-    public CartDetail save(CartDetail cartDetail) {
-        return cartRepository.save(cartDetail);
+    public Cart save(Cart cart) {
+        return cartRepository.save(cart);
     }
 }

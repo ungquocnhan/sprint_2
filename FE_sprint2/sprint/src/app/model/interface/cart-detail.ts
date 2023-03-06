@@ -1,7 +1,7 @@
-import {Product} from './product';
 
 export interface CartDetail {
-  amount?: number;
+  quantity?: number | undefined;
   idProduct?: number;
-  idAccount?: number;
+  idCustomer?: number;
+  idCartDetail?: number;
 }

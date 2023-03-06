@@ -1,4 +1,4 @@
-<div class="m-0">
+<div class="m-0" style="min-height: 70vh">
   <div class="row">
     <div class="col-lg-1"></div>
     <div class="col-lg-10">
@@ -20,107 +20,39 @@
               <th>Số lượng</th>
               <th style="width: 12%">Thành tiền</th>
               <th style="text-align: center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                     class="bi bi-trash"
-                     viewBox="0 0 16 16">
-                  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                  <path fill-rule="evenodd"
-                        d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                </svg>
+                <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                       class="bi bi-trash"
+                       viewBox="0 0 16 16">
+                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path fill-rule="evenodd"
+                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                  </svg>
+                </button>
               </th>
             </tr>
 
-            <tr>
-              <td>
-                <label for="item1">
-                  <input type="checkbox" id="item1" name="item1" value="Item 1">
-                </label>
-              </td>
-              <td><img src="img/bo-phat-song-wifi-6-bang-tan-kep-asus-ax53u-600x600.jpg"
-                       style="height: 80px; width: 80px"
-                       alt="No Image"/></td>
-              <td>Wifi 6 băng tần kép Asus AX53U</td>
-              <td style="text-align: right">1.180.000</td>
-              <td>
-                <div class="quantity">
-                  <button class="btn btn-outline-success btn-sm me-2" type="button">-</button>
-                  <label>
-                    <input type="text" class="quantity-input" value="2">
-                  </label>
-                  <button class="btn btn-outline-success btn-sm ms-2" type="button">+</button>
-                </div>
-              </td>
-              <td style="text-align: right">1.180.000</td>
-              <td>
-                <button type="button" class="btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                       class="bi bi-trash"
-                       viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                    <path fill-rule="evenodd"
-                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                  </svg>
-                </button>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <label for="item2">
-                  <input type="checkbox" id="item2" name="item2" value="Item 2" checked>
-                </label>
-              </td>
-              <td><img src="img/bo-phat-wifi-mesh-chuan-ac1200-tenda-nova-mw3-100822-123518-600x600.jpg"
-                       style="height: 80px; width: 80px"
-                       alt="No Image"/></td>
-              <td>Wifi Mesh chuẩn AC1200 Tenda nova MW3</td>
-              <td style="text-align: right">645.000</td>
-              <td>
-                <div class="quantity">
-                  <button class="btn btn-outline-success btn-sm me-2" type="button">-</button>
-                  <label>
-                    <input type="text" class="quantity-input" value="1">
-                  </label>
-                  <button class="btn btn-outline-success btn-sm ms-2" type="button">+</button>
-                </div>
-              </td>
-              <td style="text-align: right">645.000</td>
-              <td>
-                <button type="button" class="btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                       class="bi bi-trash"
-                       viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                    <path fill-rule="evenodd"
-                          d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                  </svg>
-                </button>
-              </td>
-            </tr>
-
-            <tr>
+            <tr *ngFor="let item of cartList">
               <td>
                 <label for="item3">
                   <input type="checkbox" id="item3" name="item3" value="Item 3" checked>
                 </label>
               </td>
-              <td><img src="img/router-wifi-chuan-ac1200-xiaomi-4a-trang-040822-024701-600x600.jpg"
+              <td><img src="{{item.url}}"
                        style="height: 80px; width: 80px"
                        alt="No Image"/></td>
-              <td>Router Wifi chuẩn AC1200 Xiaomi 4A trắng</td>
-              <td style="text-align: right">450.000</td>
+              <td>{{item.nameProduct}}</td>
+              <td style="text-align: right">{{item.price | number}}</td>
               <td>
                 <div class="quantity">
-                  <button class="btn btn-outline-success btn-sm me-2" type="button">-</button>
-                  <label>
-                    <input type="text" class="quantity-input" value="1">
-                  </label>
-                  <button class="btn btn-outline-success btn-sm ms-2" type="button">+</button>
+                  <button (click)="decrease(item.idCartDetail)">-</button>
+                  <input #quantity type="text" id="quantity" (change)="change(+quantity.value, item.idCartDetail)" min="1" max="10" class="quantity-input" value="{{item.amount}}">
+                  <button (click)="increase(item.idCartDetail)">+</button>
                 </div>
               </td>
-              <td style="text-align: right">450.000</td>
+              <td style="text-align: right">{{item.amount * item.price | number}}</td>
               <td>
-                <button type="button" class="btn">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="(temp = item)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                        class="bi bi-trash"
                        viewBox="0 0 16 16">
@@ -145,11 +77,11 @@
                   <div class="col-lg-3"><a href="#">Thay đổi</a></div>
                 </div>
                 <div class="row">
-                  <div class="col-lg-6"><h6>Ung Quốc Nhân</h6></div>
-                  <div class="col-lg-6"><h6>0903456456</h6></div>
+                  <div class="col-lg-6"><h6>{{nameCustomer}}</h6></div>
+                  <div class="col-lg-6"><h6>{{phoneNumber}}</h6></div>
                 </div>
                 <div class="row mb-2">
-                  <div class="col-lg-12">K702 Trần Cao Vân, Xuân Hà, Thanh Khê, TP Đà Nẵng</div>
+                  <div class="col-lg-12">{{address}}</div>
                 </div>
               </div>
               <div class="col-lg-1"></div>
@@ -162,7 +94,7 @@
               <div class="col-lg-10 mt-2">
                 <div class="row">
                   <div class="col-lg-6">Tạm tính:</div>
-                  <div class="col-lg-6 text-end">1.095.000 VND</div>
+                  <div class="col-lg-6 text-end">{{sumMoneyAll | number}} VND</div>
                 </div>
                 <div class="row">
                   <div class="col-lg-6">Giảm giá:</div>
@@ -171,7 +103,7 @@
                 <hr>
                 <div class="row mb-2">
                   <div class="col-lg-6">Tổng tiền:</div>
-                  <div class="col-lg-6 text-end">1.095.000 VND</div>
+                  <div class="col-lg-6 text-end">{{sumMoneyAll | number}} VND</div>
                 </div>
               </div>
               <div class="col-lg-1"></div>
@@ -192,5 +124,24 @@
       </div>
     </div>
     <div class="col-lg-1"></div>
+  </div>
+</div>
+
+<!--Modal xóa-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="deleteModalLabel">Xác nhận xóa.</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h6 >Bạn có muốn xóa sản phẩm này <span style="color: red">{{temp.nameProduct}}</span> ra khỏi giỏ hàng của bạn không ?</h6>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
+        <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="deleteIdCartDetail()">Xác nhận</button>
+      </div>
+    </div>
   </div>
 </div>

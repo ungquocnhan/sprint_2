@@ -23,4 +23,9 @@ public class CustomerService implements ICustomerService {
     public Optional<GetIdCustomer> findByEmail(String email) {
         return customerRepository.findByEmail(email);
     }
+
+    @Override
+    public Optional<Customer> findById(Integer id) {
+        return customerRepository.findById(id);
+    }
 }

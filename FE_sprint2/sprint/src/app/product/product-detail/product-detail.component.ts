@@ -4,9 +4,11 @@ import {ActivatedRoute} from '@angular/router';
 import {Product} from '../../model/interface/product';
 import {ImageProducts} from '../../model/interface/image-products';
 import {CartService} from '../../service/cart.service';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CartDetail} from '../../model/interface/cart-detail';
 import {TokenService} from '../../service/token.service';
+import {ToastrService} from 'ngx-toastr';
+import {timeout} from 'rxjs/operators';
 
 
 @Component({
@@ -20,8 +22,8 @@ export class ProductDetailComponent implements OnInit {
   imageList1: string | undefined;
   total = 0;
   imageList: ImageProducts[] | undefined = [];
-  addToCartForm: FormGroup = new FormGroup({});
   cartDetail: CartDetail = {};
+  quantity = 1;
 
   private static carouselDetailJs(): void {
     const script = document.createElement('script');
@@ -32,8 +34,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(private productService: ProductService,
               private activatedRoute: ActivatedRoute,
               private cartService: CartService,
-              private formBuilder: FormBuilder,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private toastrService: ToastrService) {
 
     this.activatedRoute.paramMap.subscribe(data => {
       const id = data.get('id');
@@ -64,21 +66,26 @@ export class ProductDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.addToCartForm = this.formBuilder.group({
-      amount: ['']
-    });
-    // const script1 = document.createElement('script');
-    // script1.src = '../../../assets/javascript/plus-minus.js';
-    // document.body.appendChild(script1);
   }
 
   addToCart(): void {
-    this.cartDetail.amount = Number(this.addToCartForm.value.amount);
+    this.cartDetail.quantity = this.quantity;
     this.cartDetail.idProduct = this.productDetail?.id;
-    this.cartDetail.idAccount = Number(this.tokenService.getId());
-    console.log(this.cartDetail);
+    this.cartDetail.idCustomer = Number(this.tokenService.getIdCustomer());
     this.cartService.addToCart(this.cartDetail).subscribe(() => {
-
+      this.toastrService.success('Thêm vào giỏ hàng thành công.', 'Thông báo.');
     });
+  }
+
+  decrease(): void {
+    if (this.quantity > 1) {
+      this.quantity--;
+    }
+  }
+
+  increase(): void {
+    if (this.quantity < 10) {
+      this.quantity++;
+    }
   }
 }

@@ -7,5 +7,8 @@ import java.util.Optional;
 
 public interface ICustomerService {
     Customer save(Customer customer);
+
     Optional<GetIdCustomer> findByEmail(String email);
+
+    Optional<Customer> findById(Integer id);
 }
