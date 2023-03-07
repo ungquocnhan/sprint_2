@@ -3,6 +3,9 @@ import {CartService} from '../../service/cart.service';
 import {CartDto} from '../../model/interface/cart-dto';
 import {TokenService} from '../../service/token.service';
 import {CartDetail} from '../../model/interface/cart-detail';
+import {SearchService} from '../../service/search.service';
+import {ToastrService} from 'ngx-toastr';
+import {render} from 'creditcardpayments/creditCardPayments';
 
 @Component({
   selector: 'app-cart-list',
@@ -18,22 +21,35 @@ export class CartListComponent implements OnInit {
   sumMoneyAll = 0;
   totalProduct: number | undefined;
   cartDetail: CartDetail = {};
-  idDelete = 0;
   temp: CartDto = {};
 
   constructor(private cartService: CartService,
-              private tokenService: TokenService) {
+              private tokenService: TokenService,
+              private searchService: SearchService,
+              private toastrService: ToastrService) {
   }
 
   ngOnInit(): void {
+    this.getCartList();
+  }
+
+  getCartList(): void {
     this.idCustomer = Number(this.tokenService.getIdCustomer());
     this.cartService.getCartByIdCustomer(this.idCustomer).subscribe(data => {
-
       this.cartList = data;
       this.nameCustomer = data[0].nameCustomer;
       this.phoneNumber = data[0].phoneNumber;
       this.address = data[0].address;
       this.sumMoneyAll = this.getSumMoneyAll();
+      this.searchService.setCount(this.cartList.length);
+      render({
+        id: '#myPaypalButton',
+        currency: 'VND',
+        value: (this.getSumMoneyAll() / 100000).toFixed(2),
+        onApprove: (details) => {
+          // this.toastrService.success('Thanh toán thành công');
+        }
+      });
     });
   }
 
@@ -41,13 +57,13 @@ export class CartListComponent implements OnInit {
     for (const element of this.cartList) {
       if (element.idCartDetail === idCartDetail) {
         // @ts-ignore
-        if (element.amount <= 1) {
-          element.amount = 1;
+        if (element.quantity <= 1) {
+          element.quantity = 1;
         } else {
           // @ts-ignore
-          element.amount -= 1;
+          element.quantity -= 1;
         }
-        this.cartDetail.quantity = element.amount;
+        this.cartDetail.quantity = element.quantity;
         this.cartDetail.idCartDetail = idCartDetail;
         this.cartService.updateAmountByCart(this.cartDetail).subscribe(() => {
         });
@@ -60,13 +76,13 @@ export class CartListComponent implements OnInit {
     for (const element of this.cartList) {
       if (element.idCartDetail === idCartDetail) {
         // @ts-ignore
-        if (element.amount >= 10) {
-          element.amount = 10;
+        if (element.quantity >= 10) {
+          element.quantity = 10;
         } else {
           // @ts-ignore
-          element.amount += 1;
+          element.quantity += 1;
         }
-        this.cartDetail.quantity = element.amount;
+        this.cartDetail.quantity = element.quantity;
         this.cartDetail.idCartDetail = idCartDetail;
         this.cartService.updateAmountByCart(this.cartDetail).subscribe(() => {
         });
@@ -85,9 +101,10 @@ export class CartListComponent implements OnInit {
 
   getSumMoneyAll(): number {
     let sumMoneyAll = 0;
+    // this.items.filter(item => item.selected).reduce((sum, item) => sum + item.price, 0);
     for (const element of this.cartList) {
       // @ts-ignore
-      sumMoneyAll += element.price * element.amount;
+      sumMoneyAll += element.price * element.quantity;
     }
     return sumMoneyAll;
   }
@@ -101,8 +118,8 @@ export class CartListComponent implements OnInit {
   }
 
   deleteIdCartDetail(): void {
-      this.cartService.delete(Number(this.temp.idCartDetail)).subscribe(() => {
-        this.ngOnInit();
-      });
+    this.cartService.delete(Number(this.temp.idCartDetail)).subscribe(() => {
+      this.getCartList();
+    });
   }
 }

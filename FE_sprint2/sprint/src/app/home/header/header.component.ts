@@ -5,6 +5,7 @@ import {TokenService} from '../../service/token.service';
 import {SearchService} from '../../service/search.service';
 import {ProductService} from '../../service/product.service';
 import {Manufacture} from '../../model/interface/manufacture';
+import {CartService} from '../../service/cart.service';
 
 const script = document.createElement('script');
 script.src = '../../../assets/javascript/header.js';
@@ -23,6 +24,7 @@ export class HeaderComponent implements OnInit {
   valueSearch = '';
   manufactureList: Manufacture[] = [];
   avatar: string | null | undefined;
+  itemCount = 0;
 
   constructor(private router: Router,
               private toast: ToastrService,
@@ -43,7 +45,11 @@ export class HeaderComponent implements OnInit {
       console.log(data);
       this.manufactureList = data;
     });
+    this.searchService.getCount().subscribe(count => {
+      this.itemCount = count;
+    });
   }
+
 
   logOut(): void {
     window.localStorage.clear();

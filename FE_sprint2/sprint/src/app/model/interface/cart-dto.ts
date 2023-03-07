@@ -1,6 +1,6 @@
 export interface CartDto {
   idCartDetail?: number;
-  amount?: number;
+  quantity?: number;
   url?: string;
   nameProduct?: string;
   idProduct?: number;
@@ -9,4 +9,5 @@ export interface CartDto {
   address?: string;
   nameCustomer?: string;
   idCart?: number;
+  selected?: false;
 }

@@ -2,7 +2,7 @@ package com.example.sprint.dto;
 
 public interface CartDto {
     Integer getIdCartDetail();
-    Integer getAmount();
+    Integer getQuantity();
     String getUrl();
     String getNameProduct();
     Integer getIdProduct();

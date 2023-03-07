@@ -12,8 +12,6 @@ public interface ICartDetailService {
 
     boolean existsByProduct_IdAndCart_Customer_Id(Integer idProduct, Integer idCustomer);
 
-    void updateAmount(Integer quantity, Integer idProduct, Integer idCustomer);
-
     List<CartDto> getAllCart(Integer idCustomer);
 
     void updateAmountInCart(Integer quantity, Integer idCartDetail);
@@ -21,4 +19,6 @@ public interface ICartDetailService {
     boolean deleteById(Integer idCartDetail);
 
     Optional<CartDetail> findById(Integer idCartDetail);
+
+    Optional<CartDetail> findByProduct_IdAndCart_Customer_Id(Integer idProduct, Integer idCustomer);
 }

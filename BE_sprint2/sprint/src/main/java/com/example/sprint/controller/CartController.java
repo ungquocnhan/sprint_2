@@ -50,10 +50,12 @@ public class CartController {
         }
         boolean check = cartDetailService.existsByProduct_IdAndCart_Customer_Id(cartDetailDto.getIdProduct(), cartDetailDto.getIdCustomer());
         if (check) {
-            cartDetail.setQuantity(cartDetail.getQuantity() + cartDetailDto.getQuantity());
-            cartDetailService.save(cartDetail);
-//            cartDetailService.updateAmount(cartDetailDto.getQuantity(), cartDetailDto.getIdProduct(), cartDetailDto.getIdCustomer());
-//            cartDetailService.save(cartDetail);
+            Optional<CartDetail> cartDetail1 = cartDetailService.findByProduct_IdAndCart_Customer_Id(cartDetailDto.getIdProduct(), cartDetailDto.getIdCustomer());
+            if (!cartDetail1.isPresent()) {
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+            cartDetail1.get().setQuantity(cartDetail1.get().getQuantity() + cartDetailDto.getQuantity());
+            cartDetailService.save(cartDetail1.get());
         } else {
             cart.setCustomer(customer.get());
             cartService.save(cart);

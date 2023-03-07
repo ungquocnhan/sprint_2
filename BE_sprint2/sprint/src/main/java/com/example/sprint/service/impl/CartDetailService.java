@@ -26,11 +26,6 @@ public class CartDetailService implements ICartDetailService {
     }
 
     @Override
-    public void updateAmount(Integer quantity, Integer idProduct, Integer idCustomer) {
-        cartRepository.updateAmount(quantity, idProduct, idCustomer);
-    }
-
-    @Override
     public List<CartDto> getAllCart(Integer idCustomer) {
         return cartRepository.getAllCart(idCustomer);
     }
@@ -53,6 +48,11 @@ public class CartDetailService implements ICartDetailService {
     @Override
     public Optional<CartDetail> findById(Integer idCartDetail) {
         return cartRepository.findById(idCartDetail);
+    }
+
+    @Override
+    public Optional<CartDetail> findByProduct_IdAndCart_Customer_Id(Integer idProduct, Integer idCustomer) {
+        return cartRepository.findByProduct_IdAndCart_Customer_Id(idProduct, idCustomer);
     }
 
 

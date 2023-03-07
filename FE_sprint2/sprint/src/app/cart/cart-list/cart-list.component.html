@@ -24,7 +24,8 @@
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                        class="bi bi-trash"
                        viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                     <path fill-rule="evenodd"
                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                   </svg>
@@ -34,8 +35,8 @@
 
             <tr *ngFor="let item of cartList">
               <td>
-                <label for="item3">
-                  <input type="checkbox" id="item3" name="item3" value="Item 3" checked>
+                <label for="item">
+                  <input type="checkbox" id="item" [(ngModel)]="item.selected">
                 </label>
               </td>
               <td><img src="{{item.url}}"
@@ -46,17 +47,20 @@
               <td>
                 <div class="quantity">
                   <button (click)="decrease(item.idCartDetail)">-</button>
-                  <input #quantity type="text" id="quantity" (change)="change(+quantity.value, item.idCartDetail)" min="1" max="10" class="quantity-input" value="{{item.amount}}">
+                  <input #quantity type="text" id="quantity" (change)="change(+quantity.value, item.idCartDetail)"
+                         min="1" max="10" class="quantity-input" value="{{item.quantity}}">
                   <button (click)="increase(item.idCartDetail)">+</button>
                 </div>
               </td>
-              <td style="text-align: right">{{item.amount * item.price | number}}</td>
+              <td style="text-align: right">{{item.quantity * item.price | number}}</td>
               <td>
-                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal" (click)="(temp = item)">
+                <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                        (click)="(temp = item)">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                        class="bi bi-trash"
                        viewBox="0 0 16 16">
-                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                    <path
+                      d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
                     <path fill-rule="evenodd"
                           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                   </svg>
@@ -113,9 +117,10 @@
           <div class="row mt-2">
             <div class="col-lg-1"></div>
             <div class="col-lg-10">
-              <button type="button" class="btn btn-lg" style="background-color: #008080; width: 100%">Mua
-                hàng
-              </button>
+<!--              <button type="button" class="btn btn-lg" style="background-color: #008080; width: 100%"-->
+<!--                      data-bs-toggle="modal" data-bs-target="#paypalModal">Mua hàng-->
+<!--              </button>-->
+              <div id="myPaypalButton"></div>
             </div>
             <div class="col-lg-1"></div>
           </div>
@@ -136,11 +141,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <h6 >Bạn có muốn xóa sản phẩm này <span style="color: red">{{temp.nameProduct}}</span> ra khỏi giỏ hàng của bạn không ?</h6>
+        <h6>Bạn có muốn xóa sản phẩm này <span style="color: red">{{temp.nameProduct}}</span> ra khỏi giỏ hàng của bạn
+          không ?</h6>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy bỏ</button>
-        <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="deleteIdCartDetail()">Xác nhận</button>
+        <button type="submit" class="btn btn-warning" data-bs-dismiss="modal" (click)="deleteIdCartDetail()">Xác nhận
+        </button>
       </div>
     </div>
   </div>
