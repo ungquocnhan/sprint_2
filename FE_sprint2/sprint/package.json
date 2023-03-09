@@ -27,6 +27,7 @@
     "ngx-owl-carousel-o": "^5.1.1",
     "ngx-toastr": "^11.3.3",
     "primeng": "^11.4.5",
+    "ngx-pagination": "^5.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

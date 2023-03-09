@@ -15,9 +15,6 @@ import {render} from 'creditcardpayments/creditCardPayments';
 export class CartListComponent implements OnInit {
   cartList: CartDto[] = [];
   idCustomer = 0;
-  nameCustomer = '';
-  phoneNumber = '';
-  address = '';
   sumMoneyAll = 0;
   totalProduct: number | undefined;
   cartDetail: CartDetail = {};
@@ -36,20 +33,10 @@ export class CartListComponent implements OnInit {
   getCartList(): void {
     this.idCustomer = Number(this.tokenService.getIdCustomer());
     this.cartService.getCartByIdCustomer(this.idCustomer).subscribe(data => {
-      this.cartList = data;
-      this.nameCustomer = data[0].nameCustomer;
-      this.phoneNumber = data[0].phoneNumber;
-      this.address = data[0].address;
-      this.sumMoneyAll = this.getSumMoneyAll();
+      console.log(data);
+      this.cartList = data[0];
+      this.sumMoneyAll = data[1];
       this.searchService.setCount(this.cartList.length);
-      render({
-        id: '#myPaypalButton',
-        currency: 'VND',
-        value: (this.getSumMoneyAll() / 100000).toFixed(2),
-        onApprove: (details) => {
-          // this.toastrService.success('Thanh toán thành công');
-        }
-      });
     });
   }
 
@@ -99,15 +86,15 @@ export class CartListComponent implements OnInit {
     });
   }
 
-  getSumMoneyAll(): number {
-    let sumMoneyAll = 0;
-    // this.items.filter(item => item.selected).reduce((sum, item) => sum + item.price, 0);
-    for (const element of this.cartList) {
-      // @ts-ignore
-      sumMoneyAll += element.price * element.quantity;
-    }
-    return sumMoneyAll;
-  }
+  // getSumMoneyAll(): number {
+  //   let sumMoneyAll = 0;
+  //   // this.items.filter(item => item.selected).reduce((sum, item) => sum + item.price, 0);
+  //   for (const element of this.cartList) {
+  //     // @ts-ignore
+  //     sumMoneyAll += element.price * element.quantity;
+  //   }
+  //   return sumMoneyAll;
+  // }
 
   change(quantity: number, idCartDetail: number): void {
     if (isNaN(quantity)) {

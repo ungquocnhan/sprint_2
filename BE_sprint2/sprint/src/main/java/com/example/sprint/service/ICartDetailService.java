@@ -1,9 +1,8 @@
 package com.example.sprint.service;
 
 import com.example.sprint.dto.CartDto;
+import com.example.sprint.dto.TotalMoneyCart;
 import com.example.sprint.model.CartDetail;
-
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,4 +20,6 @@ public interface ICartDetailService {
     Optional<CartDetail> findById(Integer idCartDetail);
 
     Optional<CartDetail> findByProduct_IdAndCart_Customer_Id(Integer idProduct, Integer idCustomer);
+
+    Double getTotalMoneyCart(Integer idCustomer);
 }

@@ -18,7 +18,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @SQLDelete(sql = "UPDATE cart_detail set flag_deleted = true where id = ?")
-@Where(clause = "flag_deleted = false")
+@Where(clause = "flag_deleted = false and flag_status = false")
 public class CartDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

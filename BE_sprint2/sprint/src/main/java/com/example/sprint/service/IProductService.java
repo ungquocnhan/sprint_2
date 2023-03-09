@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IProductService {
@@ -18,5 +19,9 @@ public interface IProductService {
     Page<ProductInfo> getProductPromotion(Pageable pageable);
 
     Page<ProductInfo> getProductPromotionSpecial(Pageable pageable);
+
+    List<Product> getAllProduct();
+
+    void save(Product product);
 
 }

@@ -27,4 +27,7 @@ public class Customer {
     private boolean gender;
     @OneToOne
     private Account account;
+    @OneToMany(mappedBy = "customer")
+    @JsonBackReference
+    private List<Oder> oderList;
 }

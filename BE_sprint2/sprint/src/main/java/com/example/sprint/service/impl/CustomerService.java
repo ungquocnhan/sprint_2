@@ -1,5 +1,6 @@
 package com.example.sprint.service.impl;
 
+import com.example.sprint.dto.CustomerInfo;
 import com.example.sprint.dto.GetIdCustomer;
 import com.example.sprint.model.Customer;
 import com.example.sprint.repository.ICustomerRepository;
@@ -7,6 +8,7 @@ import com.example.sprint.service.ICustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -27,5 +29,10 @@ public class CustomerService implements ICustomerService {
     @Override
     public Optional<Customer> findById(Integer id) {
         return customerRepository.findById(id);
+    }
+
+    @Override
+    public List<CustomerInfo> getCustomer(Integer id) {
+        return customerRepository.getCustomer(id);
     }
 }

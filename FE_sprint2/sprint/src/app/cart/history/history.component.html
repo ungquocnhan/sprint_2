@@ -1,0 +1,48 @@
+<div class="container" style="min-height: 80vh;">
+  <div class="row">
+    <div>
+      <h2 class="text-center fw-bold">Lịch sử mua hàng</h2>
+    </div>
+    <div class="mt-5">
+      <table class="table table-striped table-light table-bordered table-hover" style="min-height: 35vh">
+        <thead>
+        <th scope="col" class="text-center">STT</th>
+        <th scope="col" class="text-center">Mã đơn hàng</th>
+        <th scope="col" class="text-center">Tên đặt hàng</th>
+        <th scope="col" class="text-center">Địa chỉ giao hàng</th>
+        <th scope="col" class="text-center">Tổng tiền</th>
+        <th scope="col" class="text-center">Ngày thanh toán</th>
+        <th scope="col" class="text-center">Chi tiết đơn hàng</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of historyPayList | paginate: {
+                  itemsPerPage: 5,
+                  currentPage: page
+  } ; let i = index">
+          <td class="text-center">{{i + 1 + itemPerPage * (page - 1)}}</td>
+          <td class="text-end">{{item.code}}</td>
+          <td>{{item.namePay}}</td>
+          <td>{{item.addressPay}}</td>
+          <td class="text-end">{{item.totalCart}} VND</td>
+          <td class="text-center">{{item.createDate | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+          <td class="text-center">
+            <button type="button" class="btn btn-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="d-flex justify-content-center">
+        <pagination-controls
+          previousLabel="Trước"
+          nextLabel="Sau"
+          (pageChange)="onTableDataChange($event)"
+        >
+        </pagination-controls>
+      </div>
+    </div>
+  </div>
+</div>

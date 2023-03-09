@@ -11,4 +11,6 @@ public interface CartDto {
     String getAddress();
     String getNameCustomer();
     Integer getIdCart();
+    Double getTotalMoney();
+    String getEmail();
 }

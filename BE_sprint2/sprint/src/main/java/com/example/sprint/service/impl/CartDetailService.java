@@ -1,6 +1,7 @@
 package com.example.sprint.service.impl;
 
 import com.example.sprint.dto.CartDto;
+import com.example.sprint.dto.TotalMoneyCart;
 import com.example.sprint.model.CartDetail;
 import com.example.sprint.repository.ICartDetailRepository;
 import com.example.sprint.service.ICartDetailService;
@@ -53,6 +54,11 @@ public class CartDetailService implements ICartDetailService {
     @Override
     public Optional<CartDetail> findByProduct_IdAndCart_Customer_Id(Integer idProduct, Integer idCustomer) {
         return cartRepository.findByProduct_IdAndCart_Customer_Id(idProduct, idCustomer);
+    }
+
+    @Override
+    public Double getTotalMoneyCart(Integer idCustomer) {
+        return cartRepository.getTotalMoneyCart(idCustomer);
     }
 
 

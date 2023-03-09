@@ -8,6 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -19,20 +20,19 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer amountBuy;
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_date")
-    private Date createDate;
-
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "modify_date")
-    private Date modifyDate;
+    private Integer quantityBuy;
+    private LocalDateTime createDate;
+    private LocalDateTime modifyDate;
     @ManyToOne
     private Product product;
     @ManyToOne
     private Oder oder;
     @Column(columnDefinition = "bit")
     private boolean flagDeleted = false;
+    @Column(columnDefinition = "bit")
+    private boolean statusShipping = false;
+    @Column(columnDefinition = "bit")
+    private boolean statusPay = false;
+    private Double discount;
+    private Double price;
 }

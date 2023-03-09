@@ -10,4 +10,5 @@ export interface CartDto {
   nameCustomer?: string;
   idCart?: number;
   selected?: false;
+  email?: string;
 }

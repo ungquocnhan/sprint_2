@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,6 +40,16 @@ public class ProductService implements IProductService {
     @Override
     public Page<ProductInfo> getProductPromotionSpecial(Pageable pageable) {
         return productRepository.getProductPromotionSpecial(pageable);
+    }
+
+    @Override
+    public List<Product> getAllProduct() {
+        return productRepository.findAll();
+    }
+
+    @Override
+    public void save(Product product) {
+        productRepository.save(product);
     }
 
 
