@@ -1,10 +1,13 @@
 package com.example.sprint.service.impl;
 
+import com.example.sprint.dto.OrderDetailInfoDto;
 import com.example.sprint.model.OrderDetail;
 import com.example.sprint.repository.IOderDetailRepository;
 import com.example.sprint.service.IOderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OderDetailService implements IOderDetailService {
@@ -26,4 +29,11 @@ public class OderDetailService implements IOderDetailService {
     public void saveOrderDetail(OrderDetail orderDetail) {
         oderDetailRepository.saveOrderDetail(orderDetail);
     }
+
+    @Override
+    public List<OrderDetailInfoDto> getHistoryDetail(Integer id) {
+        return oderDetailRepository.getHistoryDetail(id);
+    }
+
+
 }

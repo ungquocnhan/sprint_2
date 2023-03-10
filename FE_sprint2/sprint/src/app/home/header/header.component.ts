@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
 
 
   logOut(): void {
-    window.localStorage.clear();
+    window.sessionStorage.clear();
     this.router.navigateByUrl('/').then(() => {
       location.reload();
     });

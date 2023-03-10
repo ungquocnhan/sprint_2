@@ -1,3 +1,5 @@
+import {ImageProducts} from './image-products';
+
 export interface ProductInfo {
   id?: number;
   name?: string;
@@ -7,5 +9,6 @@ export interface ProductInfo {
   nameUserConnect?: string;
   nameSpeedWifi?: string;
   url?: string;
-  percentPromotion: number | undefined;
+  percentPromotion?: number | undefined;
+  imageProducts?: ImageProducts;
 }

@@ -1,6 +1,7 @@
 package com.example.sprint.service.impl;
 
 import com.example.sprint.dto.ProductInfo;
+import com.example.sprint.dto.ProductInfoDto;
 import com.example.sprint.model.Product;
 import com.example.sprint.repository.IProductRepository;
 import com.example.sprint.service.IProductService;
@@ -52,5 +53,8 @@ public class ProductService implements IProductService {
         productRepository.save(product);
     }
 
-
+    @Override
+    public List<ProductInfoDto> getProductBySameManufacture(String nameManufacture, Integer idProduct) {
+        return productRepository.getProductBySameManufacture(nameManufacture, idProduct);
+    }
 }

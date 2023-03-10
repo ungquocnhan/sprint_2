@@ -12,6 +12,8 @@ import {timeout} from 'rxjs/operators';
 import {BehaviorSubject} from 'rxjs';
 import {CartDto} from '../../model/interface/cart-dto';
 import {SearchService} from '../../service/search.service';
+import {ProductInfo} from '../../model/interface/product-info';
+import {OwlOptions} from 'ngx-owl-carousel-o';
 
 
 @Component({
@@ -20,6 +22,31 @@ import {SearchService} from '../../service/search.service';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: false,
+    touchDrag: false,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 500,
+    autoplay: true,
+    navText: ['<-', '->'],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  };
   productDetail: Product | undefined;
   idProduct = 0;
   imageList1: string | undefined;
@@ -28,6 +55,7 @@ export class ProductDetailComponent implements OnInit {
   cartDetail: CartDetail = {};
   quantity = 1;
   cartList: CartDto[] = [];
+  productSameManufactureList: ProductInfo[] = [];
 
   private static carouselDetailJs(): void {
     const script = document.createElement('script');
@@ -67,6 +95,10 @@ export class ProductDetailComponent implements OnInit {
       // @ts-ignore
       this.total = dataProduct.price - dataProduct.price * dataProduct.promotion?.percentPromotion;
       ProductDetailComponent.carouselDetailJs();
+      this.productService.getProductSameManufacture(this.productDetail.manufacture?.name, this.productDetail.id).subscribe(data => {
+        console.log(data);
+        this.productSameManufactureList = data;
+      });
     });
   }
 

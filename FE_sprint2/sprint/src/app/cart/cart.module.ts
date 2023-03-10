@@ -8,10 +8,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
 import { HistoryComponent } from './history/history.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { PaymentSuccessComponent } from './payment-success/payment-success.component';
 
 
 @NgModule({
-  declarations: [CartListComponent, AddToCartComponent, PaymentComponent, HistoryComponent],
+  declarations: [CartListComponent, AddToCartComponent, PaymentComponent, HistoryComponent, PaymentSuccessComponent],
     imports: [
         CommonModule,
         CartRoutingModule,

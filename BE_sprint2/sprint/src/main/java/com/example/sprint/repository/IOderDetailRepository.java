@@ -1,11 +1,15 @@
 package com.example.sprint.repository;
 
+import com.example.sprint.dto.ImageProductInfo;
+import com.example.sprint.dto.OrderDetailInfoDto;
 import com.example.sprint.model.OrderDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 public interface IOderDetailRepository extends JpaRepository<OrderDetail, Integer> {
     boolean existsByProduct_IdAndOder_Customer_Id(Integer idProduct, Integer idCustomer);
@@ -34,6 +38,11 @@ public interface IOderDetailRepository extends JpaRepository<OrderDetail, Intege
             " :#{#orderDetail.price})",
             nativeQuery = true)
     void saveOrderDetail(@Param("orderDetail") OrderDetail orderDetail);
+
+    @Query("select o from OrderDetail o where o.oder.id = ?1")
+    List<OrderDetailInfoDto> getHistoryDetail(Integer id);
+
+
 
 
 

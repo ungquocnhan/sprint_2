@@ -36,4 +36,8 @@ export class CartService {
   historyPay(idCustomer: number): Observable<any> {
     return this.httpClient.get(this.URL_CART + '/history/' + idCustomer);
   }
+
+  getHistoryPayDetail(idOder: number): Observable<any> {
+    return this.httpClient.get(this.URL_CART + '/detail/' + idOder);
+  }
 }

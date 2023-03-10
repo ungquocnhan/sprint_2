@@ -25,12 +25,13 @@
           <textarea type="text" class="form-control" id="note" placeholder="Nhập ghi chú" formControlName="note"></textarea>
         </div>
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-4">
             <button type="button" class="btn btn-primary" routerLink="/cart">Giỏ hàng</button>
           </div>
           <div class="col-lg-4"></div>
-          <div class="col-lg-5 d-flex justify-content-end" *ngIf="cartList.length != 0">
-            <button type="button" class="btn btn-primary" (click)="pay()" data-bs-toggle="modal" data-bs-target="#paymentModal">Thanh toán</button>
+          <div class="col-lg-4 d-flex justify-content-end" *ngIf="cartList.length != 0">
+<!--            <button type="button" class="btn btn-primary" (click)="pay()" data-bs-toggle="modal" data-bs-target="#paymentModal">Thanh toán</button>-->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">Thanh toán</button>
           </div>
         </div>
       </form>

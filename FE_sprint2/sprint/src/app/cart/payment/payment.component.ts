@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {render} from 'creditcardpayments/creditCardPayments';
 import {CartService} from '../../service/cart.service';
 import {TokenService} from '../../service/token.service';
@@ -7,6 +7,9 @@ import {SearchService} from '../../service/search.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PayDto} from '../../model/interface/pay-dto';
 import {CustomerService} from '../../service/customer.service';
+import {ToastrService} from 'ngx-toastr';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -16,9 +19,6 @@ import {CustomerService} from '../../service/customer.service';
 export class PaymentComponent implements OnInit {
   cartList: CartDto[] = [];
   idCustomer = 0;
-  nameCustomer = '';
-  phoneNumber = '';
-  address = '';
   sumMoneyAll = 0;
   formPay: FormGroup = new FormGroup({});
   payDto: PayDto = {};
@@ -26,7 +26,9 @@ export class PaymentComponent implements OnInit {
   constructor(private cartService: CartService,
               private tokenService: TokenService,
               private searchService: SearchService,
-              private customerService: CustomerService) {
+              private customerService: CustomerService,
+              private toastrService: ToastrService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
@@ -60,14 +62,8 @@ export class PaymentComponent implements OnInit {
         currency: 'VND',
         value: (this.sumMoneyAll / 100000).toFixed(2),
         onApprove: (details) => {
-          // this.payDto = this.formPay.value;
-          // // @ts-ignore
-          // this.payDto.idCustomer = +this.tokenService.getIdCustomer();
-          // this.payDto.total = this.sumMoneyAll;
-          // console.log(this.payDto);
-          // this.cartService.paymentCart(this.payDto).subscribe(() => {
-          //   this.ngOnInit();
-          // });
+          this.pay();
+          location.href = 'http://localhost:4200/cart/payment-success';
         }
       });
     });
@@ -78,9 +74,10 @@ export class PaymentComponent implements OnInit {
     // @ts-ignore
     this.payDto.idCustomer = +this.tokenService.getIdCustomer();
     this.payDto.total = this.sumMoneyAll;
-    console.log(this.payDto);
     this.cartService.paymentCart(this.payDto).subscribe(() => {
       this.ngOnInit();
+      // window.location.reload();
     });
   }
+
 }

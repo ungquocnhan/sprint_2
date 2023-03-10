@@ -1,6 +1,7 @@
 package com.example.sprint.repository;
 
 import com.example.sprint.dto.ProductInfo;
+import com.example.sprint.dto.ProductInfoDto;
 import com.example.sprint.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,6 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IProductRepository extends JpaRepository<Product, Integer> {
@@ -146,4 +148,9 @@ public interface IProductRepository extends JpaRepository<Product, Integer> {
                     "ORDER BY ip.id desc) count ",
             nativeQuery = true)
     Page<ProductInfo> getProductPromotionSpecial(Pageable pageable);
+
+    @Query("select p from Product p where p.manufacture.name = ?1 and p.id <> ?2")
+    List<ProductInfoDto> getProductBySameManufacture(String nameManufacture, Integer idProduct);
+
+
 }

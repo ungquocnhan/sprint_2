@@ -52,4 +52,8 @@ export class ProductService {
     const params = request;
     return this.httpClient.get(this.URL_PRODUCT + '/special', {params});
   }
+
+  getProductSameManufacture(nameManufacture: string | undefined, idProduct: number | undefined): Observable<any> {
+    return this.httpClient.get(this.URL_PRODUCT + '/sameManufacture?nameManufacture=' + nameManufacture + '&idProduct=' + idProduct);
+  }
 }

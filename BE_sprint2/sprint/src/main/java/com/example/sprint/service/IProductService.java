@@ -1,6 +1,7 @@
 package com.example.sprint.service;
 
 import com.example.sprint.dto.ProductInfo;
+import com.example.sprint.dto.ProductInfoDto;
 import com.example.sprint.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -23,5 +24,7 @@ public interface IProductService {
     List<Product> getAllProduct();
 
     void save(Product product);
+
+    List<ProductInfoDto> getProductBySameManufacture(String nameManufacture, Integer idProduct);
 
 }

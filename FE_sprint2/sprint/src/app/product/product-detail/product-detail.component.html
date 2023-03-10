@@ -117,7 +117,33 @@
       <p class="indent">{{productDetail?.description}}</p>
     </div>
   </div>
+  <hr>
   <div class="col-lg-1"></div>
+
+  <div class="row mb-4">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <p class="fw-bold" style="font-size: 30px">Sản phẩm cùng loại</p>
+      <owl-carousel-o [options]="customOptions">
+        <ng-container *ngFor="let slide of productSameManufactureList">
+          <ng-template carouselSlide>
+            <div class="card">
+              <a [routerLink]="['/product/detail',slide.id]" class="card-link"
+                 style="float: right; text-decoration: none; color: teal">
+                <img src="{{slide.imageProducts[0].url}}" height="120" width="100%"
+                     alt="No image"/>
+                <div class="card-body">
+                  <h5 class="card-title" style="min-height: 72px;">{{slide.name}} </h5>
+                </div>
+              </a>
+            </div>
+          </ng-template>
+        </ng-container>
+      </owl-carousel-o>
+
+    </div>
+    <div class="col-md-1"></div>
+  </div>
 </div>
 <div>
 </div>

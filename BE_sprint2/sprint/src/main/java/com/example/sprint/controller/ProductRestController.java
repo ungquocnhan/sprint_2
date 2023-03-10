@@ -1,6 +1,7 @@
 package com.example.sprint.controller;
 
 import com.example.sprint.dto.ProductInfo;
+import com.example.sprint.dto.ProductInfoDto;
 import com.example.sprint.model.Product;
 import com.example.sprint.service.IProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -46,5 +48,12 @@ public class ProductRestController {
     public ResponseEntity<Page<ProductInfo>> getProductPromotionSpecial(@PageableDefault(size = 8) Pageable pageable) {
         Page<ProductInfo> productInfoPage = productService.getProductPromotionSpecial(pageable);
         return new ResponseEntity<>(productInfoPage, HttpStatus.OK);
+    }
+
+    @GetMapping("/sameManufacture")
+    public ResponseEntity<List<ProductInfoDto>> getProductSameManufacture(@RequestParam("nameManufacture") String nameManufacture,
+                                                                          @RequestParam("idProduct") Integer idProduct) {
+        List<ProductInfoDto> productInfoDtoList = productService.getProductBySameManufacture(nameManufacture, idProduct);
+        return new ResponseEntity<>(productInfoDtoList, HttpStatus.OK);
     }
 }

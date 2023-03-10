@@ -4,6 +4,7 @@ import {CartListComponent} from './cart-list/cart-list.component';
 import {AddToCartComponent} from './add-to-cart/add-to-cart.component';
 import {PaymentComponent} from './payment/payment.component';
 import {HistoryComponent} from './history/history.component';
+import {PaymentSuccessComponent} from './payment-success/payment-success.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,9 @@ const routes: Routes = [
   },
   {
     path: 'history', component: HistoryComponent
+  },
+  {
+    path: 'payment-success', component: PaymentSuccessComponent
   }
 ];
 

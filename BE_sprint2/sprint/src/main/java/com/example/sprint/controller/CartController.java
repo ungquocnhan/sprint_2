@@ -2,8 +2,6 @@ package com.example.sprint.controller;
 
 import com.example.sprint.dto.*;
 import com.example.sprint.model.*;
-import com.example.sprint.repository.IOderDetailRepository;
-import com.example.sprint.repository.IProductRepository;
 import com.example.sprint.service.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -144,8 +142,8 @@ public class CartController {
             cartDetail.get().setFlagStatus(true);
             cartDetailService.save(cartDetail.get());
 
-            boolean check = oderDetailService.existsByProduct_IdAndOder_Customer_Id(cartDto.getIdProduct(), payDto.getIdCustomer());
-            if (!check) {
+//            boolean check = oderDetailService.existsByProduct_IdAndOder_Customer_Id(cartDto.getIdProduct(), payDto.getIdCustomer());
+//            if (!check) {
                 orderDetail.setProduct(productService.findById(cartDto.getIdProduct()).get());
                 orderDetail.setOder(oder);
                 orderDetail.setQuantityBuy(cartDto.getQuantity());
@@ -156,7 +154,7 @@ public class CartController {
                 orderDetail.setStatusShipping(false);
                 orderDetail.setPrice(cartDto.getPrice());
                 oderDetailService.saveOrderDetail(orderDetail);
-            }
+//            }
         }
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -165,5 +163,11 @@ public class CartController {
     public ResponseEntity<List<OderInfo>> getHistoryPay(@PathVariable("idCustomer") Integer id) {
         List<OderInfo> oderInfoList = oderService.getHistoryPay(id);
         return new  ResponseEntity<>(oderInfoList, HttpStatus.OK);
+    }
+
+    @GetMapping("/detail/{oderId}")
+    public ResponseEntity<List<OrderDetailInfoDto>> getHistoryPayDetail(@PathVariable("oderId") Integer id) {
+        List<OrderDetailInfoDto> orderDetailInfoList = oderDetailService.getHistoryDetail(id);
+        return new ResponseEntity<>(orderDetailInfoList, HttpStatus.OK);
     }
 }
