@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {render} from 'creditcardpayments/creditCardPayments';
 import {CartService} from '../../service/cart.service';
 import {TokenService} from '../../service/token.service';
@@ -7,9 +7,7 @@ import {SearchService} from '../../service/search.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {PayDto} from '../../model/interface/pay-dto';
 import {CustomerService} from '../../service/customer.service';
-import {ToastrService} from 'ngx-toastr';
-import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-payment',
@@ -27,8 +25,8 @@ export class PaymentComponent implements OnInit {
               private tokenService: TokenService,
               private searchService: SearchService,
               private customerService: CustomerService,
-              private toastrService: ToastrService,
-              private router: Router) {
+              private title: Title) {
+    this.title.setTitle('Thanh toán');
   }
 
   ngOnInit(): void {
@@ -46,7 +44,6 @@ export class PaymentComponent implements OnInit {
   getCustomerById(): void {
     this.idCustomer = Number(this.tokenService.getIdCustomer());
     this.customerService.getCustomer(this.idCustomer).subscribe(data => {
-      console.log(data);
       this.formPay.patchValue(data[0]);
     });
   }
@@ -76,7 +73,6 @@ export class PaymentComponent implements OnInit {
     this.payDto.total = this.sumMoneyAll;
     this.cartService.paymentCart(this.payDto).subscribe(() => {
       this.ngOnInit();
-      // window.location.reload();
     });
   }
 

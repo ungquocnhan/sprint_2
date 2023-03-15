@@ -1,5 +1,6 @@
 package com.example.sprint.service;
 
+import com.example.sprint.dto.AmountProductDto;
 import com.example.sprint.dto.ProductInfo;
 import com.example.sprint.dto.ProductInfoDto;
 import com.example.sprint.model.Product;
@@ -26,5 +27,7 @@ public interface IProductService {
     void save(Product product);
 
     List<ProductInfoDto> getProductBySameManufacture(String nameManufacture, Integer idProduct);
+
+    Optional<AmountProductDto> getAmountExist(Integer id);
 
 }

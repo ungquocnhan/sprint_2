@@ -5,6 +5,7 @@ import {ImageProducts} from '../../model/interface/image-products';
 import {OwlOptions} from 'ngx-owl-carousel-o';
 import {ProductInfo} from '../../model/interface/product-info';
 import {SearchService} from '../../service/search.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -42,20 +43,21 @@ export class HomeComponent implements OnInit {
   request = {page: 0, size: 8};
   imageList: ProductInfo[] = [];
   valueSearch = '';
-  total = 0;
 
   constructor(private productService: ProductService,
-              private searchService: SearchService) {
+              private searchService: SearchService,
+              private title: Title) {
+    this.title.setTitle('Trang chủ');
   }
 
   ngOnInit(): void {
 
     this.productService.getAllImage().subscribe(data => {
-      console.log(data);
       this.imageList = data;
     });
     this.searchService.getValue().subscribe(value => {
       this.valueSearch = value;
+      this.request.page = 0;
       this.getAllProduct(this.request);
     });
   }
@@ -63,7 +65,6 @@ export class HomeComponent implements OnInit {
 
   getAllProduct(request: { page: number, size: number } | undefined): void {
     this.productService.getAll(this.valueSearch, request).subscribe(data => {
-      console.log(data);
       if (data !== undefined) {
         this.productList = data;
       }

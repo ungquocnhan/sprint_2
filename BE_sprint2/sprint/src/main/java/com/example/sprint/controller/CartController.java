@@ -29,9 +29,6 @@ public class CartController {
     private ICartService cartService;
 
     @Autowired
-    private CartRepository cartRepository;
-
-    @Autowired
     private IOderService oderService;
 
     @Autowired
@@ -62,6 +59,7 @@ public class CartController {
         } else {
             cart.setCustomer(customer.get());
             cartService.save(cart);
+            cartDetail.setPrice(cartDetailDto.getPricePromotion());
             cartDetail.setProduct(product.get());
             cartDetail.setCart(cart);
             cartDetailService.save(cartDetail);
@@ -88,6 +86,15 @@ public class CartController {
     public ResponseEntity<?> updateAmountInCart(@RequestBody CartDetailDto cartDetailDto) {
         cartDetailService.updateAmountInCart(cartDetailDto.getQuantity(), cartDetailDto.getIdCartDetail());
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/amount-exist/{idCartDetail}")
+    public ResponseEntity<?> getAmountExist(@PathVariable("idCartDetail") Integer id) {
+        Optional<AmountProductDto> productInfo = productService.getAmountExist(id);
+        if (!productInfo.isPresent()) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(productInfo, HttpStatus.OK);
     }
 
     @DeleteMapping("{idCartDetail}")

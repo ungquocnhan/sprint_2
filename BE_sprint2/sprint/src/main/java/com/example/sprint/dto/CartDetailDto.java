@@ -15,4 +15,5 @@ public class CartDetailDto {
     private Integer idProduct;
     private Integer idCustomer;
     private Integer idCartDetail;
+    private Double pricePromotion;
 }

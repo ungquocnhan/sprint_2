@@ -24,13 +24,14 @@ export class SignUpComponent implements OnInit {
   roles: string[] = [];
   idAccount: string | null | undefined;
   nameRegex = '^[AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]+(?: [AÀẢÃÁẠĂẰẲẴẮẶÂẦẨẪẤẬBCDĐEÈẺẼÉẸÊỀỂỄẾỆFGHIÌỈĨÍỊJKLMNOÒỎÕÓỌÔỒỔỖỐỘƠỜỞỠỚỢPQRSTUÙỦŨÚỤƯỪỬỮỨỰVWXYỲỶỸÝỴZ][aàảãáạăằẳẵắặâầẩẫấậbcdđeèẻẽéẹêềểễếệfghiìỉĩíịjklmnoòỏõóọôồổỗốộơờởỡớợpqrstuùủũúụưừửữứựvwxyỳỷỹýỵz]*)*$';
-
+  errorMessage = '';
   constructor(private securityService: SecurityService,
               private router: Router,
               private formBuilder: FormBuilder,
               private tokenService: TokenService,
               private toast: ToastrService,
               private title: Title) {
+    this.title.setTitle('Đăng ký');
   }
 
   ngOnInit(): void {
@@ -56,13 +57,16 @@ export class SignUpComponent implements OnInit {
         name: new FormControl('', [Validators.required, Validators.pattern(this.nameRegex),
           Validators.minLength(3), Validators.maxLength(50)]),
         email: new FormControl('', [Validators.required,
-          Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$')]),
-        address: new FormControl('', [Validators.required, Validators.maxLength(255), Validators.minLength(5), Validators.maxLength(100)]),
+          Validators.pattern('^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)*$'),
+          Validators.minLength(3), Validators.maxLength(50)]),
+        address: new FormControl('', [Validators.required,
+          Validators.minLength(5), Validators.maxLength(100)]),
         idNumber: new FormControl('', [Validators.required,
-          Validators.pattern('^(\\d{12})$')]),
+          Validators.pattern('^(\\d{12})$'), Validators.maxLength(12)]),
         gender: new FormControl('', Validators.required),
         birthday: new FormControl('', [Validators.required]),
-        phoneNumber: new FormControl('', [Validators.required, Validators.pattern('(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})')]),
+        phoneNumber: new FormControl('', [Validators.required,
+          Validators.pattern('(((\\+|)84)|0)(3|5|7|8|9)+([0-9]{8})'), Validators.maxLength(15)]),
         encryptPassword: new FormControl('', [Validators.required,
           Validators.minLength(6), Validators.maxLength(50)])
       }, {validators: this.checkBirthday}
@@ -91,6 +95,7 @@ export class SignUpComponent implements OnInit {
       this.toast.success('Đăng ký thành công.');
       this.router.navigateByUrl('/security/signin');
     }, error => {
+      this.errorMessage = error.error.message;
       this.action = false;
       this.toast.error('Đăng ký không thành công.', 'Thông báo');
     }, () => {

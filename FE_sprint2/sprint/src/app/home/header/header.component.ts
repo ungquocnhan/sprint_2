@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {TokenService} from '../../service/token.service';
@@ -21,10 +21,10 @@ export class HeaderComponent implements OnInit {
   name: string | null | undefined;
   roles: string[] = [];
   idAccount: string | null | undefined;
-  valueSearch = '';
   manufactureList: Manufacture[] = [];
   avatar: string | null | undefined;
   itemCount = 0;
+  @ViewChild('searchInput') searchInput: any;
 
   constructor(private router: Router,
               private toast: ToastrService,
@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
       this.avatar = this.tokenService.getAvatar();
     }
     this.productService.getAllManufacture().subscribe(data => {
-      console.log(data);
       this.manufactureList = data;
     });
     this.searchService.getCount().subscribe(count => {
@@ -64,5 +63,10 @@ export class HeaderComponent implements OnInit {
   search(searchInput: string): void {
     this.searchService.setValue(searchInput);
     this.router.navigateByUrl('/home');
+    this.searchInput.nativeElement.value = '';
+  }
+
+  developing(): void {
+    this.toast.info('Chức năng đang được phát triển.', 'Xin lỗi.');
   }
 }

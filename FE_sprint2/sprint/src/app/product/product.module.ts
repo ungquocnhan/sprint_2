@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductRoutingModule } from './product-routing.module';
-import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductPromotionComponent } from './product-promotion/product-promotion.component';
 import {CarouselModule} from 'ngx-owl-carousel-o';
@@ -11,7 +10,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
-  declarations: [ ProductListComponent, ProductDetailComponent, ProductPromotionComponent, ProductPromotionSpecialComponent],
+  declarations: [ ProductDetailComponent, ProductPromotionComponent, ProductPromotionSpecialComponent],
     imports: [
         CommonModule,
         ProductRoutingModule,

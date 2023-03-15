@@ -4,4 +4,5 @@ export interface CartDetail {
   idProduct?: number;
   idCustomer?: number;
   idCartDetail?: number;
+  pricePromotion?: number;
 }

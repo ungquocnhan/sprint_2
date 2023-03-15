@@ -41,4 +41,5 @@ public class CartDetail {
     private boolean flagDeleted = false;
     @Column(columnDefinition = "bit")
     private boolean flagStatus = false;
+    private Double price;
 }

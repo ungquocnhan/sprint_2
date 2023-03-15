@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
+    boolean existsByIdNumber(String idNumber);
     @Query(value = "select id as idCustomer from customer where email = :email", nativeQuery = true)
     Optional<GetIdCustomer> findByEmail(String email);
 
@@ -18,5 +19,5 @@ public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
     @Query("select c from Customer c where c.id = ?1")
     List<CustomerInfo> getCustomer(Integer id);
 
-
+    boolean existsByPhoneNumber(String phoneNumber);
 }

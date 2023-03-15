@@ -4,6 +4,7 @@ import {ProductInfoJson} from '../../model/interface/product-info-json';
 import {ProductInfo} from '../../model/interface/product-info';
 import {ProductService} from '../../service/product.service';
 import {SearchService} from '../../service/search.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-promotion',
@@ -43,13 +44,14 @@ export class ProductPromotionComponent implements OnInit {
   valueSearch = '';
 
   constructor(private productService: ProductService,
-              private searchService: SearchService) {
+              private searchService: SearchService,
+              private title: Title) {
+    this.title.setTitle('Chương trình khuyến maãi');
   }
 
   ngOnInit(): void {
 
     this.productService.getAllImage().subscribe(data => {
-      console.log(data);
       this.imageList = data;
     });
     this.searchService.getValue().subscribe(value => {

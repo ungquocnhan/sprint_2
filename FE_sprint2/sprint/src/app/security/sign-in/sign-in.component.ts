@@ -25,7 +25,7 @@ export class SignInComponent implements OnInit {
     private formBuilder: FormBuilder,
     private titleService: Title
   ) {
-    this.titleService.setTitle('Trang đăng nhập');
+    this.titleService.setTitle('Đăng nhập');
   }
 
   getFormLogin(): void {
@@ -43,11 +43,10 @@ export class SignInComponent implements OnInit {
   login(): void {
     const signInForm = this.signInForm?.value;
     this.securityService.signIn(signInForm).subscribe(data => {
-        console.log(data);
         if (data.token !== undefined) {
           if (this.signInForm?.value.rememberMe) {
-            this.tokenService.rememberMe(data.roles, data.name, data.token);
-            this.router.navigateByUrl('/header');
+            this.tokenService.rememberMe(data.roles, data.name, data.token, data.idCustomer, data.email, data.avatar, data.id);
+            this.router.navigateByUrl('');
           } else {
             this.tokenService.setToken(data.token);
             this.tokenService.setName(data.name);

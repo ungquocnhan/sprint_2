@@ -7,10 +7,7 @@ public interface CartDto {
     String getNameProduct();
     Integer getIdProduct();
     Double getPrice();
-    String getPhoneNumber();
-    String getAddress();
-    String getNameCustomer();
     Integer getIdCart();
+    Integer getAmountExist();
     Double getTotalMoney();
-    String getEmail();
 }

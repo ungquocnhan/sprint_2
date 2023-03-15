@@ -87,9 +87,13 @@ export class TokenService {
     return this.roles;
   }
 
-  public rememberMe(roles: string[], name: string, token: string): void {
+  public rememberMe(roles: string[], name: string, token: string, idCustomer: string, email: string, avatar: string, id: string): void {
     this.setRole(roles);
     this.setName(name);
     this.setToken(token);
+    this.setIdCustomer(idCustomer);
+    this.setEmail(email);
+    this.setAvatar(avatar);
+    this.setId(id);
   }
 }

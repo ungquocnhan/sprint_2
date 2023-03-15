@@ -89,4 +89,5 @@ export interface Product {
   guarantee?: Guarantee;
   promotion?: Promotion;
   imageProducts?: ImageProducts[];
+  amountExist?: number;
 }

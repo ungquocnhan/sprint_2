@@ -17,7 +17,7 @@ export class AdminGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.tokenService.getToken()) {
-      if (JSON.stringify(this.tokenService.getRole()) === JSON.stringify(['ADMIN'])) {
+      if (JSON.stringify(this.tokenService.getRole()) === JSON.stringify(['ROLE_ADMIN'])) {
         return true;
       }else {
         this.toast.warning('Bạn không đủ quyền, vui lòng đăng nhập để tiếp tục.', 'Thông báo');

@@ -40,4 +40,8 @@ export class CartService {
   getHistoryPayDetail(idOder: number): Observable<any> {
     return this.httpClient.get(this.URL_CART + '/detail/' + idOder);
   }
+
+  getAmountExist(idCartDetail: number): Observable<any> {
+    return this.httpClient.get(this.URL_CART + '/amount-exist/' + idCartDetail);
+  }
 }

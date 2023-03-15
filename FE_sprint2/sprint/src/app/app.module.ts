@@ -10,10 +10,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthInterceptor} from './service/interceptor/auth.interceptor';
 import {RouterModule} from '@angular/router';
 import {CarouselModule} from 'primeng/carousel';
-
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

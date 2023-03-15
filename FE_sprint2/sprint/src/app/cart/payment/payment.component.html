@@ -1,7 +1,7 @@
 <div class="container" style="min-height: 80vh">
   <div class="row">
     <div class="col-lg-7">
-      <h3>Thông tin thanh toán</h3>
+      <h2 class="fw-bold">Thông tin thanh toán</h2>
       <form [formGroup]="formPay">
         <div class="mb-3 mt-3">
           <label for="name" class="form-label">Họ và tên: </label>
@@ -26,12 +26,11 @@
         </div>
         <div class="row">
           <div class="col-lg-4">
-            <button type="button" class="btn btn-primary" routerLink="/cart">Giỏ hàng</button>
+            <button type="button" class="btn btn-lg" routerLink="/cart" style="background-color: #8F8248">Giỏ hàng</button>
           </div>
           <div class="col-lg-4"></div>
           <div class="col-lg-4 d-flex justify-content-end" *ngIf="cartList.length != 0">
-<!--            <button type="button" class="btn btn-primary" (click)="pay()" data-bs-toggle="modal" data-bs-target="#paymentModal">Thanh toán</button>-->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#paymentModal">Thanh toán</button>
+            <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal" style="background-color: teal">Thanh toán</button>
           </div>
         </div>
       </form>
@@ -93,7 +92,7 @@
         <div id="myPaypalButton"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #8F8248">Đóng</button>
       </div>
     </div>
   </div>

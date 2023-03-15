@@ -29,10 +29,10 @@
             <a class="navbar-brand me-2" (click)="search('')" routerLink="/home" style="font-size: 200%; color: #8C5B07">routerwifiuqn.vn</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link color-weight" href="#" *ngIf="roles[0]== 'ROLE_ADMIN' && checkLogin">Thống kê</a>
+                <a class="nav-link color-weight" (click)="developing()" *ngIf="roles[0]== 'ROLE_ADMIN' && checkLogin">Thống kê</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link color-weight" href="#" *ngIf="roles[0]== 'ROLE_ADMIN' && checkLogin">Thêm mới</a>
+                <a class="nav-link color-weight" (click)="developing()" *ngIf="roles[0]== 'ROLE_ADMIN' && checkLogin">Thêm mới</a>
               </li>
             </ul>
 
@@ -46,7 +46,7 @@
                 Đăng nhập
               </a>
               <a type="button" class="btn btn-white px-3 me-3 color-weight" routerLink="/security/signup" *ngIf="!checkLogin">
-                Đăng kí
+                Đăng ký
               </a>
             </div>
             <div *ngIf="roles[0]=='ROLE_USER' && checkLogin">
@@ -56,8 +56,8 @@
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
                   <li><a class="dropdown-item" routerLink="/cart/history">Lịch sử mua hàng</a></li>
-                  <li><a class="dropdown-item" href="#">Kiểm tra đơn hàng</a></li>
-                  <li><a class="dropdown-item" href="#">Cập nhật thông tin</a></li>
+                  <li><a class="dropdown-item" (click)="developing()">Kiểm tra đơn hàng</a></li>
+                  <li><a class="dropdown-item" (click)="developing()">Cập nhật thông tin</a></li>
                   <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#logout">Đăng xuất</a></li>
                 </ul>
               </div>
@@ -66,7 +66,6 @@
             <div *ngIf="roles[0]=='ROLE_ADMIN' && checkLogin">
               <div class="dropdown">
                 <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <!--                  <i class="fa-regular fa-user"></i>-->
                   <span *ngIf="checkLogin"><span class="navbar-brand rounded-circle icon-sm icon border "
                                                  *ngIf="checkLogin"><img src="{{avatar}}" style="border-radius: 50%; height: 40px; width: 40px" alt=""></span> </span>
 
@@ -85,11 +84,8 @@
     </div>
 
     <div class="row">
-      <!-- Navbar -->
       <nav class="navbar navbar-expand-lg navbar-light">
-        <!-- Container wrapper -->
         <div class="container-fluid ms-5 me-5">
-          <!-- Toggle button -->
           <button
             class="navbar-toggler"
             type="button"
@@ -102,9 +98,7 @@
             <i class="fas fa-bars"></i>
           </button>
 
-          <!-- Collapsible wrapper -->
           <div class="collapse navbar-collapse" id="navbarButtonsOne">
-            <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <div class="dropdown">
@@ -119,7 +113,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#" style="font-weight: 500; font-size: 19px; color: lightslategrey">Sản phẩm bán chạy</a>
+                <a class="nav-link" (click)="developing()" style="font-weight: 500; font-size: 19px; color: lightslategrey">Sản phẩm bán chạy</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" routerLink="/product/promotion" style="font-weight: 500; font-size: 19px; color: lightslategrey">Chương trình khuyến mãi</a>
@@ -128,7 +122,6 @@
                 <a class="nav-link" routerLink="/product/special" style="font-weight: 500; font-size: 19px; color: lightslategrey">Giảm giá đặc biệt</a>
               </li>
             </ul>
-            <!-- Left links -->
 
             <div class="d-flex align-items-center">
               <form class="d-flex input-group w-auto">
@@ -139,17 +132,14 @@
                   aria-label="Search"
                   #searchInput
                 />
-                <button class="btn btn-outline-secondary" type="button" (click)="search(searchInput.value)">
+                <button class="btn" type="button" (click)="search(searchInput.value)" style="background-color: #8F8248">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </form>
             </div>
           </div>
-          <!-- Collapsible wrapper -->
         </div>
-        <!-- Container wrapper -->
       </nav>
-      <!-- Navbar -->
     </div>
   </div>
   <hr>
@@ -167,8 +157,8 @@
         Bạn chắc chắn muốn đăng xuất!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ bỏ</button>
-        <button type="submit" (click)="logOut()" data-bs-dismiss="modal" class="btn btn-danger">Tiếp tục</button>
+        <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #8F8248">Huỷ bỏ</button>
+        <button type="submit" (click)="logOut()" data-bs-dismiss="modal" class="btn" style="background-color: teal">Tiếp tục</button>
       </div>
     </div>
   </div>

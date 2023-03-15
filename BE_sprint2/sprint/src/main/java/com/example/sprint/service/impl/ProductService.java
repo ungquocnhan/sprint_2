@@ -1,5 +1,6 @@
 package com.example.sprint.service.impl;
 
+import com.example.sprint.dto.AmountProductDto;
 import com.example.sprint.dto.ProductInfo;
 import com.example.sprint.dto.ProductInfoDto;
 import com.example.sprint.model.Product;
@@ -57,4 +58,10 @@ public class ProductService implements IProductService {
     public List<ProductInfoDto> getProductBySameManufacture(String nameManufacture, Integer idProduct) {
         return productRepository.getProductBySameManufacture(nameManufacture, idProduct);
     }
+
+    @Override
+    public Optional<AmountProductDto> getAmountExist(Integer id) {
+        return productRepository.getAmountExist(id);
+    }
+
 }

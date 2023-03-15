@@ -5,22 +5,24 @@ import {AddToCartComponent} from './add-to-cart/add-to-cart.component';
 import {PaymentComponent} from './payment/payment.component';
 import {HistoryComponent} from './history/history.component';
 import {PaymentSuccessComponent} from './payment-success/payment-success.component';
+import {AuthGuard} from '../authGuard/auth.guard';
+import {UserGuard} from '../authGuard/user.guard';
 
 const routes: Routes = [
   {
-    path: '', component: CartListComponent
+    path: '', component: CartListComponent, canActivate: [AuthGuard, UserGuard]
   },
   {
-    path: 'add', component: AddToCartComponent
+    path: 'add', component: AddToCartComponent, canActivate: [AuthGuard, UserGuard]
   },
   {
-    path: 'payment', component: PaymentComponent
+    path: 'payment', component: PaymentComponent, canActivate: [AuthGuard, UserGuard]
   },
   {
-    path: 'history', component: HistoryComponent
+    path: 'history', component: HistoryComponent, canActivate: [AuthGuard, UserGuard]
   },
   {
-    path: 'payment-success', component: PaymentSuccessComponent
+    path: 'payment-success', component: PaymentSuccessComponent, canActivate: [AuthGuard, UserGuard]
   }
 ];
 
