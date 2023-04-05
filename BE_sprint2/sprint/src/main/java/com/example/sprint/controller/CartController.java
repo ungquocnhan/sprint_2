@@ -2,6 +2,7 @@ package com.example.sprint.controller;
 
 import com.example.sprint.dto.*;
 import com.example.sprint.model.*;
+import com.example.sprint.repository.IOderDetailRepository;
 import com.example.sprint.service.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,8 @@ public class CartController {
 
     @Autowired
     private IOderDetailService oderDetailService;
+    @Autowired
+    private IOderDetailRepository iOderDetailRepository;
 
 
     @PostMapping("")
@@ -114,7 +117,7 @@ public class CartController {
     @PostMapping("/payment")
     public ResponseEntity<?> paymentCart(@RequestBody PayDto payDto) {
         Oder oder = new Oder();
-        OrderDetail orderDetail = new OrderDetail();
+
 
         Optional<Customer> customer = customerService.findById(payDto.getIdCustomer());
         if (!customer.isPresent()) {
@@ -142,6 +145,7 @@ public class CartController {
         }
 
         for (CartDto cartDto : cartDtoList) {
+            OrderDetail orderDetail = new OrderDetail();
             Optional<CartDetail> cartDetail = cartDetailService.findByProduct_IdAndCart_Customer_Id(cartDto.getIdProduct(), payDto.getIdCustomer());
             if (!cartDetail.isPresent()) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -160,7 +164,8 @@ public class CartController {
                 orderDetail.setModifyDate(LocalDateTime.now());
                 orderDetail.setStatusShipping(false);
                 orderDetail.setPrice(cartDto.getPrice());
-                oderDetailService.saveOrderDetail(orderDetail);
+                oderDetailService.save(orderDetail);
+//                oderDetailService.saveOrderDetail(orderDetail);
 //            }
         }
         return new ResponseEntity<>(HttpStatus.OK);

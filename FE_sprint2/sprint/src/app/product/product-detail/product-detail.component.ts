@@ -137,7 +137,7 @@ export class ProductDetailComponent implements OnInit {
             this.cartList = data;
             this.searchService.setCount(this.cartList.length);
           });
-          this.toastrService.success('Thêm vào giỏ hàng thành công.', 'Thông báo.');
+          this.toastrService.success('Thêm vào giỏ hàng thành công.', 'Thông báo.', {timeOut: 1000});
         });
       }
     } else {
@@ -153,8 +153,12 @@ export class ProductDetailComponent implements OnInit {
   }
 
   increase(): void {
-    if (this.quantity < 10) {
+    // @ts-ignore
+    if (this.quantity < this.productDetail?.amountExist) {
       this.quantity++;
+    }else if (this.quantity === this.productDetail?.amountExist) {
+      this.quantity = this.productDetail.amountExist;
+      this.message = 'Đã đạt số lượng tối đa sản phẩm trong kho.';
     }
   }
 }

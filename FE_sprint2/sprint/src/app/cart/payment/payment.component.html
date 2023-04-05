@@ -1,4 +1,4 @@
-<div class="container" style="min-height: 80vh">
+<div class="container mb-4" style="min-height: 80vh">
   <div class="row">
     <div class="col-lg-7">
       <h2 class="fw-bold">Thông tin thanh toán</h2>
@@ -26,11 +26,11 @@
         </div>
         <div class="row">
           <div class="col-lg-4">
-            <button type="button" class="btn btn-lg" routerLink="/cart" style="background-color: #8F8248">Giỏ hàng</button>
+            <button type="button" class="btn btn-lg" routerLink="/cart" style="background-color: #8F8248"><span style="color: white">Giỏ hàng</span></button>
           </div>
           <div class="col-lg-4"></div>
           <div class="col-lg-4 d-flex justify-content-end" *ngIf="cartList.length != 0">
-            <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal" style="background-color: teal">Thanh toán</button>
+            <button type="button" class="btn btn-lg" data-bs-toggle="modal" data-bs-target="#paymentModal" style="background-color: teal"><span style="color: white">Thanh toán</span></button>
           </div>
         </div>
       </form>

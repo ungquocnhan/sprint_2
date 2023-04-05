@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
               private tokenService: TokenService,
               private searchService: SearchService,
               private productService: ProductService) {
+    this.searchService.getCount().subscribe(count => {
+      this.itemCount = count;
+    });
   }
 
   ngOnInit(): void {
@@ -43,9 +46,6 @@ export class HeaderComponent implements OnInit {
     }
     this.productService.getAllManufacture().subscribe(data => {
       this.manufactureList = data;
-    });
-    this.searchService.getCount().subscribe(count => {
-      this.itemCount = count;
     });
   }
 

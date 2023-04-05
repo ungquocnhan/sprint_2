@@ -56,9 +56,9 @@ export class CartListComponent implements OnInit {
         this.cartDetail.idCartDetail = idCartDetail;
         this.cartService.updateAmountByCart(this.cartDetail).subscribe(() => {
         });
+        this.getCartList();
       }
     }
-    this.ngOnInit();
   }
 
   increase(idCartDetail: number): void {
@@ -76,16 +76,16 @@ export class CartListComponent implements OnInit {
         this.cartDetail.idCartDetail = idCartDetail;
         this.cartService.updateAmountByCart(this.cartDetail).subscribe(() => {
         });
+        this.getCartList();
       }
     }
-    this.ngOnInit();
   }
 
   private updateAmount(quantity: number | undefined, idCartDetail: number): void {
     this.cartDetail.quantity = quantity;
     this.cartDetail.idCartDetail = idCartDetail;
     this.cartService.updateAmountByCart(this.cartDetail).subscribe(() => {
-      this.ngOnInit();
+      this.getCartList();
     });
   }
 
@@ -109,6 +109,7 @@ export class CartListComponent implements OnInit {
 
   private getAmountExistProduct(idCartDetail: number): void {
     this.cartService.getAmountExist(idCartDetail).subscribe(data => {
+      console.log(data);
       this.amountExist = data.amountExist;
     });
   }

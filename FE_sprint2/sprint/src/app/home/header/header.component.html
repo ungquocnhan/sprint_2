@@ -26,7 +26,7 @@
           </button>
 
           <div class="collapse navbar-collapse" id="navbarButtons">
-            <a class="navbar-brand me-2" (click)="search('')" routerLink="/home" style="font-size: 200%; color: #8C5B07">routerwifiuqn.vn</a>
+            <a class="navbar-brand me-2" (click)="search('')" routerLink="/home" style="font-size: 200%; color: white">routerwifiuqn.vn</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
                 <a class="nav-link color-weight" (click)="developing()" *ngIf="roles[0]== 'ROLE_ADMIN' && checkLogin">Thống kê</a>
@@ -133,7 +133,7 @@
                   #searchInput
                 />
                 <button class="btn" type="button" (click)="search(searchInput.value)" style="background-color: #8F8248">
-                  <i class="fa-solid fa-magnifying-glass"></i>
+                  <i class="fa-solid fa-magnifying-glass" style="color: white"></i>
                 </button>
               </form>
             </div>
@@ -157,8 +157,8 @@
         Bạn chắc chắn muốn đăng xuất!
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #8F8248">Huỷ bỏ</button>
-        <button type="submit" (click)="logOut()" data-bs-dismiss="modal" class="btn" style="background-color: teal">Tiếp tục</button>
+        <button type="button" class="btn" data-bs-dismiss="modal" style="background-color: #8F8248"><span style="color: white">Huỷ bỏ</span></button>
+        <button type="submit" (click)="logOut()" data-bs-dismiss="modal" class="btn" style="background-color: teal"><span style="color: white">Tiếp tục</span></button>
       </div>
     </div>
   </div>

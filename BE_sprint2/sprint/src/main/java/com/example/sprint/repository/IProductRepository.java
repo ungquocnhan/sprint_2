@@ -1,8 +1,6 @@
 package com.example.sprint.repository;
 
-import com.example.sprint.dto.AmountProductDto;
-import com.example.sprint.dto.ProductInfo;
-import com.example.sprint.dto.ProductInfoDto;
+import com.example.sprint.dto.*;
 import com.example.sprint.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
